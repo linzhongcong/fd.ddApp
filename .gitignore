@@ -1,0 +1,31 @@
+# IDE
+.tea/*
+.kaitian
+.mini-ide
+
+# dependencies
+node_modules
+**/node_modules
+
+
+.idea
+.DS_Store
+
+
+# misc
+npm-debug.log*
+yarn-error.log
+yarn.lock
+package-lock.json
+*bak
+
+# visual studio code
+.vscode
+.history
+*.log
+functions/*
+.temp/**
+
+.eslintcache
+
+*.ts

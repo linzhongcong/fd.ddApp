@@ -1,0 +1,74 @@
+<template name="return_visit">
+<view class="page">
+  <view class="page-section" style="padding: 0rpx 24rpx;"> 
+
+    <view class="form-row">
+      <view class="form-row-label">被访客户：</view>
+      <view class="form-row-content">{{signInfo.merchantName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">客户类型：</view>
+      <view class="form-row-content">{{signInfo.merchantTypeName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="page-section-title" style="padding-left: 0rpx;">1.拍门店/公司大门：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.checkoutFileItems}}">
+        <image class="page-section-demo-img" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+  </view>
+
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="form-row">
+      <view class="form-row-label">签到时间：</view>
+      <view class="form-row-content">{{signInfo.signinAt}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签退时间：</view>
+      <view class="form-row-content">{{signInfo.signoutAt}}</view>
+    </view>
+    <view class="form-line"></view>
+    
+    <view class="form-row">
+      <view class="form-row-label">签退地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到类型：</view>
+      <view class="form-row-content">{{signInfo.checkinWay}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">访问时长：</view>
+      <view class="form-row-content">{{signInfo.checkinLength}}</view>
+    </view>
+
+  </view>
+
+  <view class="page-section">
+    <block a:for="{{signInfo.surveyInfo}}">
+      <view class="page-section-title">{{index + 1}}.{{item.title}}</view>
+      <view class="page-section-demo">
+        <view class="form-row-content">{{item.value}}</view>
+      </view>
+      <view class="form-line"></view>
+    </block>
+  </view>
+</view>
+</template>

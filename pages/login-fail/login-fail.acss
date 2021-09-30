@@ -1,0 +1,31 @@
+@import "../../utils/common/css/style.acss";
+
+/* 错误页 */
+.learn{
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  line-height: 60rpx;
+}
+
+.learn image{
+  margin-top: 200rpx;
+}
+
+.learn .title{
+  margin-top: 30rpx;
+  font-weight: bold;
+  font-size: .3rem;
+  color: #333;
+}
+
+.learn button{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  background: #fff;
+  border: 1px solid #ddd;
+  opacity:1;
+  color: #333;
+  font-weight: bold;
+}

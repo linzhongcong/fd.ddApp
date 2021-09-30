@@ -1,0 +1,40 @@
+.up-image {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 15rpx;
+  background-color: #fff;
+}
+
+.up-image .up-image-icom {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 10rpx;
+  border: 1rpx solid #f8f8f8;
+}
+
+.up-image .add-icom {
+  width: 100%;
+  height: 100%;
+}
+
+.up-image .delete-icom {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.up-image .image {
+  width: 150rpx;
+  height: 150rpx;
+  border: 1rpx solid #f8f8f8;
+}
+
+.up-image .up-image-content {
+  position: relative;
+  top: 3rpx;
+  left: 5rpx;
+}

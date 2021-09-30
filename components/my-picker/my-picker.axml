@@ -1,0 +1,29 @@
+<view class="picker-modal">
+
+  <view class="picker-placeholder" catchTap="handleClick">
+    <text>{{ value || placeholder}}</text>
+  </view>    
+    
+  <view class="picker-back {{show ? 'active' : ''}}" catchTap="handlePickerCancle"></view>
+  <view class="picker-content {{show ? 'active' : ''}}">
+    <view class="picker-toolbar">
+      <view class="picker-list-title">{{title}}</view>
+      <view class="picker-btns">
+        <text onTap="handlePickerCancle">取消</text>
+        <text onTap="handlePickerConfirm"  data-value="{{index}}">确定</text>
+      </view>
+    </view>
+    
+    <picker-view value="{{index}}" onChange="handlePickerChange" data-value="{{index}}">
+      <picker-view-column>
+        <view>{{defaluText}}</view>
+        <block a:if="{{rangeKey}}">
+          <view a:for="{{range}}" a:key="*this">{{item.rangeKey}}</view>
+        </block>
+        <block a:else>
+          <view a:for="{{range}}" a:key="*this">{{item}}</view>
+        </block>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

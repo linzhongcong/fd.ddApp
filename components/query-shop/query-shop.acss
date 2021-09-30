@@ -1,0 +1,75 @@
+.query-shop-search {
+  position: absolute;
+	top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 777;
+}
+
+.query-shop-search .am-list-content-subtitle {
+  height: 48rpx;
+  font-size: 24rpx;
+  line-height: 48rpx;
+}
+
+.query-shop-search .search-bar {
+  width: 90%;
+  align-self: center;
+}
+
+.query-shop-search .current-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10rpx 30rpx;
+  height: 30rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+}
+
+.query-shop-search .shopClear {
+  height: 34rpx;
+  margin-left: 10rpx;
+  color: #ccc; 
+  line-height: 34rpx;
+}
+
+.query-shop-search .scroll {
+  width: 100%;
+  align-self: center;
+}
+
+.query-shop-search .add-facede {
+  margin-left: 10rpx;
+  color: cornflowerblue;
+}
+
+.query-shop-search .btn-back {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+/* 动画 */
+.animation {
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: all .2s linear;
+}
+
+.animation-over {
+  visibility: visible;
+  transform: none;
+}
+
+

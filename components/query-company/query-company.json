@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents":{
+    "search-bar": "mini-ali-ui/es/search-bar/index",
+    "tag": "mini-ali-ui/es/tag/index"
+  }
+}

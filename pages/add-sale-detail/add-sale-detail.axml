@@ -1,0 +1,69 @@
+<import src="./card-store-sale.axml" />
+
+<view class="page">
+<view class="flex-row">
+  <view class="flex-item">客户门店</view>
+  <view class="flex-item">{{facadeName}}</view>
+</view>
+
+<form class="form">
+  <view class="page-section">
+    <title className="form-page-section-title">产品明细</title>
+    <view class="form-row-sku">
+      <view class="form-row-label-sku">门店SKU数<text class="required">*</text></view>
+      <view class="form-row-input-sku"><input class="input-sku" controlled type="text" placeholder="点击填写" 
+      value="{{sku_count}}" onInput="handleInputChangeSkuCount" /></view>
+    </view>
+    <view class="form-line"></view>
+    <template is="card-store-sale" data="{{facadeSaleDetail}}"></template>
+  </view>
+
+  <view class="page-section">
+    <title className="form-page-section-title">POS记录</title>
+    <view class="card-template">
+      <block a:for="{{facadePosRecord}}" a:for-index="cindex">
+      <view class="card" a:key="*this">
+        <view class="card-item">
+          <view class="card-label">品牌</view>
+          <view class="card-content" style="{{cindex > 0 ? 'position: relative; left: 200rpx;' : ''}}">
+            <picker value="{{item.broadIndex}}" range="{{brands}}" range-key="name"
+              data-cindex="{{cindex}}" data-id="{{item.id}}" onChange="handleChangeFacadePosRecord">
+              <view>{{brands[item.brandIndex].name}}</view>
+            </picker>
+          </view>
+          <block a:if="{{cindex > 0 }}">
+            <image class="btns-reduce-icon" style="align-self: center; margin-bottom: 5rpx;" mode="aspectFit" src="/asset/icom/reduce.svg" 
+            data-cindex="{{cindex}}" data-type="pos_record" onTap="onReduce"/>
+          </block>
+        </view>
+        <view class="form-line" style="margin: 0;"></view>
+        
+        <view class="card-item">
+          <view class="card-label">上传POS记录图片</view>
+        </view>
+        <view class="page-section-demo" style="width: 100%;">
+          <up-image list="{{item.posRecordImg}}" mode="scaleToFill" dataset="{{cindex}}" onReceive="onReceive" onDelete="onDelete"> </up-image>
+        </view>
+      </view>
+      </block>
+
+      <button class="btns-add bgwhite" style="margin-top: 0;" size="default" data-type="pos_record" onTap="onAdd">
+        <image class="btns-icon" mode="aspectFit" src="/asset/icom/add.svg"/><text>添加品牌</text>
+      </button>
+
+    </view>    
+    <!-- 占位 -->
+    <view style="height: 120rpx;"></view>
+    
+  </view>
+
+  <view class="footer page-section" style="margin-bottom: 0;">
+    <view class="btns-submit">
+      <button class="btns-cancel" size="default" onTap="onCancel" >取消</button>
+      <button class="btns-comform" size="default" type="primary" onTap="onSubmit" >保存</button>
+    </view>
+  </view>
+
+</form>
+
+</view>

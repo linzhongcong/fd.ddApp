@@ -1,0 +1,60 @@
+<view class="query-shop-search {{animation ? 'animation' : ''}} {{show ? 'animation-over' : ''}}">
+
+    <block a:if="{{currentSearchType === 'store'}}">
+      <search-bar className="search-bar" maxLength="{{30}}" placeholder= "搜索门店"
+      value="{{storeVal}}" onInput="onInput" onClear="onClear"/>
+    </block>
+
+    <block a:else>
+      <search-bar className="search-bar" maxLength="{{30}}" placeholder="搜索客户" 
+      value="{{merchantVal}}" onInput="onInput" onClear="onClear"/>
+    </block> 
+
+  <view class="current-search">
+    <text>客户：{{merchantVal}}</text>
+    <block a:if="{{merchantVal}}">
+    <view onTap="shopClear"><am-icon className="shopClear" type="close" size="17"  /></view>
+    </block>
+  </view>
+
+  <scroll-view class="scroll" style=" height: 83vh;"
+    scroll-y="{{true}}" lower-threshold="{{20}}"
+    enable-back-to-top="{{true}}" trap-scroll="{{true}}"
+    onScrollToLower="onScrollToLower">
+        
+    <block a:if="{{currentSearchType === 'store'}}">
+      <block a:if="{{storeList.length > 0 }}">
+        <list>
+          <list-item a:for="{{storeList}}" index="{{index}}"
+            lowerSubtitle="{{item.address}}"
+            data-item="{{item}}" data-type="store" onClick="onChooseItem">
+            <text style="font-size: 30rpx;">{{item.name}}</text>
+          </list-item>
+        </list>
+      </block>
+
+      <block a:else>
+        <view class="no-data">暂无数据</view>
+        <block a:if="{{supplementFace}}">
+          <text class="add-facede" onTap="onSupplementFace">门店补录</text>
+        </block>
+      </block>
+    </block>
+
+    <block a:else>
+      <block a:if="{{merchantList.length > 0 }}">
+        <list>
+          <list-item a:for="{{merchantList}}" index="{{index}}"
+            data-item="{{item}}" data-type="merchant" onClick="onChooseItem">
+            <text style="font-size: 30rpx;">{{item.merchantName}}</text>
+          </list-item>
+        </list>
+      </block>
+
+      <block a:else>
+        <view class="no-data">暂无数据</view>
+      </block>
+    </block>
+  </scroll-view>
+  <button class="btn-back" type="primary" catchTap="onClose">返回</button>
+</view>

@@ -1,0 +1,121 @@
+<view>
+  <view class="user-head">
+      <view class="user-info">
+        <view class="user-top user-top-left">
+          <view class="user-avatar-wrap">
+            <image 
+            class="user-avatar"
+            src="{{ statisticsInfo.url ? statisticsInfo.url : '/static/image/avatar.png' }}"/>
+          </view>
+            <view>
+              <view class="name-wrap">
+                 <text class="user-name">{{ info.name }}</text>
+                 <text class="user-label">{{ info.deptJobName }}</text>
+              </view>
+              <text class="user-department">{{ info.department }}</text>
+            </view>
+        </view>
+        <view class="user-top user-top-right">
+          <view class="sign-count">{{ statisticsInfo.checkinNum ? statisticsInfo.checkinNum  : 0}}次</view>
+          <view class="sign-text">
+            <image mode="scaleToFill" style="width: 24rpx; height: 24rpx;margin-right:6rpx;" src="/static/image/sign.svg"/>
+            <text>本月签到</text>
+          </view>
+        </view>
+      </view>
+      <view class="user-target">
+        我的目标：{{ statisticsInfo.target }}
+      </view>
+
+  </view>
+
+  <view class="user-statistics">
+    <view class="statistics-item" style="padding-left:20rpx">
+      <view class="statistics-count">{{ statisticsInfo.checkinLen ? statisticsInfo.monthTimeLength : 0}}</view>
+      <text class="statistics-text">本月在线时长(时)</text>
+    </view>
+    <view class="statistics-item">
+      <!-- <view class="statistics-count">{{ statisticsInfo.totalAmount ? statisticsInfo.totalAmount :  0}}</view> -->
+      <view class="statistics-count">待更新</view>
+      <text class="statistics-text">本月回款金额(元)</text>
+    </view>
+    <view class="statistics-item"  style="padding-right:20rpx">
+      <view class="statistics-count">待更新</view>
+      <!-- <text class="statistics-count">{{ statisticsInfo.clientNum ? statisticsInfo.clientNum : 0 }}</text> -->
+      <text class="statistics-text">本月开拓客户(家)</text>
+    </view>
+  </view>
+
+  <view class="user-btn" >
+    <view class="user-btn-box">
+      <view onTap="reset" >
+        <image mode="scaleToFill" src="/static/image/reset.svg"/>
+        重置
+      </view>
+      <view onTap="jumpFilter" >
+        <image mode="scaleToFill" src="/static/image/filter.svg"/>
+        筛选
+      </view>
+    </view>
+  </view>
+
+  <view class="sign-info">
+  <scroll-view class="scroll" style="height: 80vh;" scroll-y="{{true}}" onScrollToLower="onScrollToLower">
+    <view a:for="{{ signInfo }}" class="info-show">
+      <view class="info-date">
+        <view class="style-list"></view>
+        <text>{{ item.date }}</text>
+      </view>
+      
+      <view a:for="{{ item.info }}" a:for-item="items" class="info-card" data-item="{{items}}" data-id="{{ items.checkinId }}" onTap="jumpInfo" >
+        <view class="info-border">
+          <view class="sign-company"><text>{{ items.merchantName }}</text></view>
+          <view class="sign-time">{{ items.timer }}</view>
+        </view>
+
+        <view class="main-info">
+          <view class="sign-con">
+            <view class="sign-title">签到人：</view>
+            <view>{{ items.createdBy }}</view>
+          </view>
+          <view class="sign-con">
+            <view class="sign-title">签到地点：</view>
+            <view>{{ items.address }}</view>
+          </view>
+          <view class="sign-con">
+            <view class="sign-title">拜访类型：</view>
+            <view>{{ items.visitType }}</view>
+          </view>
+          <view class="sign-con">
+            <view class="sign-title">客户类型：</view>
+            <view>{{ items.merchantType }}</view>
+          </view>
+          <view class="sign-con">
+            <view class="sign-title">客户名称：</view>
+            <view>{{ items.merchantName }}</view>
+          </view>
+          <view class="sign-con">
+            <view class="sign-title" style="width:20%">备注：</view>
+            <view style="width:78%">{{ items.outRemark }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  </view>
+  
+
+  <view class="user-bottom" a:if="{{ signInfo.length !== 0 }}">
+    <view a:if="{{ also === true }}">下滑加载更多</view>
+    <view a:else>已经到最底了哦！</view>
+  </view>
+
+  <view a:else class="user-bottom" style="margin-top:180rpx">
+    <image 
+      style="width: 280rpx; height: 280rpx;" 
+      mode="scaleToFill" 
+      src="/static/image/no-data.png"/>
+    <view >您还未有签到记录</view>
+  </view>
+
+</view>

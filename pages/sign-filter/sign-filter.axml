@@ -1,0 +1,126 @@
+<view>
+  <form class="filer" onSubmit="subForm" onReset="onReset">
+    <view class="filer-main">
+      <!-- 客户名称 -->
+      <view class="filer-box">
+        <view class="ismain">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text>
+              客户名称
+            </view>
+            <view class="title-right">
+              {{ isDate.selectShop }}
+            </view>
+          </view>
+          <view class="shop">
+            <view a:for="{{ topList }}" class="shop-btn {{ item.isShow === true ? 'active' : '' }}"  data-index="{{ index }}"  onTap="thisShop" >
+                {{ item.name }}
+            </view>
+            <view a:if="{{!topList.length}}" class="shop-btn {{ item.isShow === true ? 'active' : '' }}">暂无数据</view>
+          </view>
+          <view class="box-btn" onTap="jumpShopFilter">
+            查看全部客户 >
+          </view>
+        </view>
+      </view>
+
+      <!-- 日期 -->
+      <view class="filer-box mar-top">
+        <view class="ismain" style="height: 140rpx;">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text>
+              日期
+            </view>
+            <view class="title-right">
+            </view>
+          </view>
+          <radio-group class="date mar-top" onChange="bindPickerChange">
+            <label a:for="{{ dateType }}">
+              <view class="date-btn {{ item.isShow === true ? 'active' : '' }}" >
+                <radio value="{{ index }}" />{{ item.name }}
+              </view>
+            </label>
+          </radio-group>
+        </view>
+
+        <view class="ismain">
+          <view class="box-title">
+            <view class="title-left">
+              <!-- <text class="box-icon"></text> -->
+              时间区间
+            </view>
+            <view class="title-right">
+            </view>
+          </view>
+          <view class="data-set mar-top">
+            <view data-type="startTime" onTap="pickerShow" class="data-btn" >
+              {{ isDate.startDate }}
+            </view>
+            <text>-</text>
+            <view data-type="endTime" onTap="pickerShow" class="data-btn" >
+              {{ isDate.endDate }}
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 队员 -->
+      <view class="filer-box mar-top">
+        <view class="ismain">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text>
+              队员
+            </view>
+            <view class="title-right">
+              {{ isDate.selectColleagues }}
+            </view>
+          </view>
+          <view class="shop">
+            <view a:for="{{ topColleaguesList }}" class="shop-btn {{ item.isShow ? 'active' : '' }}"  data-index="{{ index }}"  onTap="thisColleagues" >
+                {{ item.name }}
+            </view>
+            <view a:if="{{!topColleaguesList.length}}" class="shop-btn {{ item.isShow ? 'active' : '' }}">暂无数据</view>
+          </view>
+          <view class="box-btn" onTap="jumpColleaguesFilter">
+            查看全部队员 >
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="filer-footer">
+      <view class="ismain">
+        <button size="default" type="default" plain="{{ true }}" formType="reset" >重置</button>
+        <view>
+          
+        </view>
+        <button
+         class="{{ conformBtnActive || isDate.selectShop  ? '' : 'btn-disable' }}" 
+         size="default" 
+         type="primary" 
+         onTap="subForm">
+          确定
+        </button>
+      </view>
+    </view>
+  </form>
+
+  <view class="prop " a:if="{{ isDate.isShow }}">
+    <view class="prop-main">
+      <date-picker type="{{timeRange.timebegin.multiPickerType}}" 
+        format="{{timeRange.timebegin.format}}"
+        value="{{pickerValue}}" 
+        initialValue="{{initialValue}}" 
+        minDate="{{minDate}}"
+        maxDate="{{maxDate}}"
+        onHiddenMask="onHiddenMask" 
+        onPickerChange="pickerChange">
+      </date-picker>
+    </view>
+    
+  </view>
+  
+</view>

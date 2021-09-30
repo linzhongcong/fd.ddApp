@@ -1,0 +1,180 @@
+<view class="sign-out page"> 
+<form onSubmit="onSubmit" onReset="onReset">
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="page-section-title" style="padding: 24rpx 0rpx;">签退信息</view>
+    <view class="form-row form-row-content-flex">
+      <text class="form-content">{{signoutTime}}</text>
+      <text class="form-content" onTap="mapUrl">地址微调</text>
+    </view>
+    <view class="form-row">
+      <image class="form-label__img" mode="scaleToFill" src="/static/image/address.svg"/>
+      <text class="form-row-content">{{signInfo.address}}</text>
+    </view>
+    <view class="form-row form-row-content-flex">
+      <text class="form-content">签到类型</text>
+      <text class="form-content">{{visitType}}</text>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">维护时间{{signTime}} </view>
+      <view class="form-content">维护时长{{visitDuration}}</view>
+    </view>
+  </view>
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="page-section-title" style="padding: 24rpx 0rpx;">签退详情</view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">被访客户</view>
+      <view class="form-content">{{signInfo.merchantName}}</view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">客户类型</view>
+      <view class="form-content">
+      <picker value="{{shopIndex}}" range="{{shopTypes}}" range-key="label" disabled>
+        <view class="picker">
+        <label a:if="{{ signInfo.merchantType === '' }}" class="label-null">请选择客户类型</label>
+        <label a:else class="form-content">{{  shopTypes[shopIndex].label }}</label>
+        <input class="merchantType form-content" name="merchantType" value="{{signInfo.merchantType}}" disabled />
+        </view>
+      </picker>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex" onTap="addContacts">
+      <view class="form-content">新建联系人</view>
+      <view class="form-content"> <am-icon type="right" size="15" /></view>
+    </view>
+    <view class="form-line"></view>
+    <view class="page-section-title" style="padding: 24rpx 0rpx;">1.拍门店/公司大门<text class="required">*</text></view>
+    <view class="page-section-demo">
+      <view class="signout-img">
+        <image onTap="upSignOutImage" mode="scaleToFill" class="signout-img-default" src="/static/image/upload_img.svg"/>
+        <view a:for="{{ signOutImages }}" class="signout-img-box">
+          <text onTap="delImg" data-index='{{index}}' data-name="self" class="signout-img-text"></text>
+          <image onTap="preview" onLoad="onLoadImg" data-index='{{index}}' data-name="self"  mode="scaleToFill" class="signout-img-content" src="{{ item.objectUrl }}"/>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<block a:for="{{questionnaire}}" a:for-item="question" a:for-index="qindex">
+<block a:if="{{question.isGroup === true}}">
+  <block a:if="{{question.type === 'checkbox'}}">
+    <view class="page-section" :key="{{'qg' + question.id}}" 
+      style="{{ question && question.groupShow ? 'display: block;' : 'display: none;' }}">
+
+      <view class="page-section-title">
+        {{qindex + 1}}.{{question.title}}<text a:if="{{question.required}}" class="required">*</text>
+        <text a:if="{{question.name === 'intentionCause'}}" class="form-title">（最多选择两项）</text>
+      </view>
+      <view class="page-section-demo">
+        <checkbox-group class="checkbox-group" data-item="{{question}}" name="{{question.name}}" onChange="">
+          <block a:for="{{question.options[question.key]}}" a:for-item="option">
+            <label class="checkbox" :key="{{'o' + option.id}}" >
+              <checkbox class="checkbox-opt" checked="{{option.ischecked}}" disabled="{{option.isdisable}}"
+               value="{{option.ischecked}}" 
+               data-remark='{{question.remark}}'
+               data-option='{{option}}' onChange="groupCheckboxChange" />
+              <text class="checkbox-text">{{option.label}}</text>
+            </label>
+
+            <text a:if="{{option.label === '折扣不满意'}}" class="form--content">了解的普遍折扣范围为</text>
+            <textarea class="form-input form-content" placeholder="请输入10字以上"  auto-height
+              a:if="{{option.needRemark}}"
+              style="{{option.remarkShow ? 'display: block;' : 'display: none;'}}" 
+              onBlur="remarkTextInput" data-option="{{option}}" value="{{option.remark}}"  />
+          </block>
+        </checkbox-group>
+      </view>
+      
+    </view>
+  </block>
+
+</block>
+
+
+  <block a:else>
+    <block a:if="{{question.type === 'radio'}}">
+      <view class="page-section" :key="{{'q'+question.id}}">
+        <view class="page-section-title">
+          {{qindex + 1}}.{{question.title}}<text a:if="{{question.required}}" class="required">*</text>
+        </view>
+        <view class="page-section-demo">
+          <radio-group class="radio-group" data-question="{{question}}" name="{{question.name}}"
+            onChange="{{question.name === 'coIntention' ? 'groupRadio' : 'commonRadio'}}" >
+
+            <block a:for="{{question.options}}" a:for-item="option">
+              <label class="radio" :key="{{'o'+option.id}}">
+                <radio data-option='{{option}}' class="radio-opt"
+                  value="{{option.id + ';' + option.label + ';' + option.masterId + ';' + option.questionId + ';' + option.remark}}"
+                  checked={{option.ischecked}} onChange="{{question.name === 'coIntention' ? 'groupRadioChange' : 'commonRadioChange'}}"/>
+                <text class="radio-text">{{option.label}}</text>
+              </label>
+
+              <textarea class="form-input form-content" placeholder="请输入10字以上" auto-height
+                a:if="{{option.needRemark}}"
+                data-option="{{option}}" value="{{option.remark}}"
+                style="{{question.remarkShow ? 'display: block;' : 'display: none;' }}"
+                onBlur="remarkTextInput" />
+            </block>
+          </radio-group>
+            
+        </view>
+      </view>
+    </block>
+
+
+    <block a:if="{{question.type === 'checkbox'}}">
+      <view class="page-section" :key="{{'q'+question.id}}">
+        <view class="page-section-title">
+          {{qindex + 1}}.{{question.title}}<text a:if="{{question.required}}" class="required">*</text>
+        </view>
+        <view class="page-section-demo">
+          <checkbox-group class="radio-group" data-question="{{question}}" name="{{question.name}}"
+            onChange="commonCheckbox" >
+
+            <block a:for="{{question.options}}" a:for-item="option">
+              <label class="radio" :key="{{'o'+option.id}}">
+                <checkbox data-option='{{option}}' class="radio-opt"
+                  value="{{option.id + ';' + option.label + ';' + option.masterId + ';' + option.questionId + ';' + option.remark}}" 
+                  checked={{option.ischecked}} onChange="commonCheckboxChange"/>
+                <text class="radio-text">{{option.label}}</text>
+              </label>
+
+              <textarea class="form-input form-content" placeholder="请输入10字以上" auto-height
+                a:if="{{option.needRemark}}"
+                data-option="{{option}}" value="{{option.remark}}"
+                style="{{question.remarkShow ? 'display: block;' : 'display: none;' }}"
+                onBlur="remarkTextInput" />
+            </block>
+            
+          </checkbox-group>
+        </view>
+      </view>
+    </block>
+
+
+    <block a:if="{{question.type  === 'text'}}">
+      <view class="page-section" :key="{{'q' + qindex}}">
+        <view class="page-section-title">
+          {{qindex + 1}}.{{question.title}}<text a:if="{{question.required}}" class="required">*</text>
+        </view>
+        <view class="page-section-demo">
+          <textarea class="form-input form-content" placeholder="请输入10字以上" auto-height
+            a:if="{{true}}"
+            data-item="{{question}}" name='{{question.name}}' 
+            value="{{question.value}}" onBlur="commonTextInput" />
+        </view>
+      </view>
+    </block>
+
+
+  </block>
+
+  </block>
+
+  <view class="page-section-btns" style="margin-top: 72rpx;">
+    <button class="btn-absolute-bottom" type="primary" formType="submit" disabled="{{loading}}">维护签退</button>
+  </view>
+</form>
+</view>

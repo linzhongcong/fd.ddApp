@@ -1,0 +1,52 @@
+<view class="ditrict-filter">
+  <view class="picker-commodity-wrap">
+    <view class="picker-label">已选： </view>
+    <view a:if="{{ selectDistrictList.trueSlectedDistrictList.length }}" class="picker-text">
+      {{ selectDistrictList.trueSlectedDistrictList.reverse().join('、') }}
+    </view>
+    <view 
+      a:if="{{ selectDistrictList.trueSlectedDistrictList.length }}" 
+      data-type="open" 
+      class="view-picker-btn" 
+      onTap="handleCloseModal">
+      查看已选 >
+    </view>
+  </view>
+
+  <view class="district-select-wrap"> 
+    <cascader
+      isReset="{{ isReset }}"
+      isComfirn="{{ isComfirn }}"
+      onChange="handleChangeDistrictClick"
+    />
+  </view>
+
+  <view class="btn-wrap">
+    <view onTap="handleResetClick" class=" btn btn-reset">重置</view>
+    <view
+      onTap="handleConfirmClick"
+      class=" btn btn-confirm {{ selectDistrictList.trueSlectedDistrictList.length ? 'btn-comfirn__active' : '' }}">
+      确定
+    </view>
+  </view>
+    
+  <!-- 已选客户弹窗 -->
+  <view 
+    a:if="{{ isOpenShopModal }}" 
+    class="select-modal-wrap">
+    <view class="select-modal">
+      <view class="modal-title"> 已选地区 </view>
+      <view class="modal-detail-wrap">
+        <block a:for="{{ selectDistrictList.trueSlectedDistrictList }}" key="{{ index }}">
+          <view class="detail-list"> {{ index + 1 }}、{{ item }}</view>
+        </block>
+      </view>
+      <view 
+        class="confirm-btn" 
+        data-type="close"
+        onTap="handleCloseModal">
+        确定
+      </view>
+    </view>
+  </view>
+</view>

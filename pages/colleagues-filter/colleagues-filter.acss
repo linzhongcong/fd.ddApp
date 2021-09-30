@@ -1,0 +1,122 @@
+.all-business {
+  background:rgba(255,255,255,1);
+  min-height: 100vh;
+}
+
+.business-hold {
+  display: flex;
+}
+
+.business-left {
+  flex: 5;
+  padding-left: 30rpx;
+}
+
+.business-right {
+  flex: 0.6;
+  margin-top: 30rpx;
+}
+
+/* 左边样式 */
+.scroll-list {
+  padding-bottom: 30rpx;
+  border-bottom:1px solid rgba(221,221,221,1);
+}
+
+.list-title {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  line-height: 44rpx;
+  color:rgba(0,161,233,1);
+  opacity: 1;
+  margin: 30rpx 0 26rpx 0;
+}
+
+.checkbox {
+  display: block;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+/* .checkbox checkbox {
+  width: 26rpx;
+  height: 26rpx;
+} */
+
+.checkbox-text {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 36rpx;
+  color:rgba(51,51,51,1);
+  opacity: 1;
+  margin-left: 10rpx;
+}
+
+
+/* 右边样式 */
+.letter-style {
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 28rpx;
+  color:rgba(153,153,153,1);
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+/* 当前字母选择样式 */
+.letter-choose {
+  position: relative
+}
+
+.choose-letter {
+  width: 80rpx;
+  height: 80rpx;
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 56rpx;
+  color:rgba(255,255,255,1);
+  background:rgba(0,161,233,1);
+  box-shadow: 0rpx 4rpx 8rpx rgba(0,0,0,0.16);
+  opacity:1 ;
+  border-radius: 4rpx;
+  position: absolute;
+  right: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -24rpx
+}
+
+.choose-letter::after {
+  content: "";
+  position: absolute;
+  border: 14rpx solid transparent;
+  border-left-color: rgba(0,161,233,1);
+  width: 0;
+  height: 0;
+  right: -28rpx;
+  top: 2orpx;
+}
+
+.btn-disbale {
+  background-color: #7FD0F4;
+  border-color: #7FD0F4;
+}
+
+.nodata {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  width: 100vw;
+  overflow: hidden;
+}

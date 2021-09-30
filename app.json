@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/logining/logining",
+    "pages/entry/entry",
+    "pages/entry-category/leads/leads",
+    "pages/entry-category/public-leads/public-leads",
+    "pages/entry-category/potential-customer/potential-customer",
+    "pages/entry-category/public-customer/public-customer",
+    "pages/entry-category/cooperate-customer/cooperate-customer",
+    "pages/entry-category/cooperate-facade/cooperate-facade",
+    "pages/category-details/leads/leads",
+    "pages/category-details/potential-customer/potential-customer",
+    "pages/category-details/cooperate-customer/cooperate-customer",
+    "pages/category-details/cooperate-facade/cooperate-facade",
+    "pages/index/index",
+    "pages/ranking/ranking",
+    "pages/merchant/index/index",
+    "pages/merchant/merchant-detail/merchant-detail",
+    "pages/merchant/clue-transfer/clue-transfer",
+    "pages/user/index/index",
+    "pages/check-in-details/check-in-details",
+    "pages/merchant/filter/filter",
+    "pages/sign-filter/sign-filter",
+    "pages/colleagues-filter/colleagues-filter",
+    "pages/sign-in/index/index",
+    "pages/sign-in/transfer-station/transfer-station",
+    "pages/face-make/face-make",
+    "pages/sign-out/index/index",
+    "pages/sign-out/return_visit/return_visit",
+    "pages/sign-out/maintain/maintain",
+    "pages/sign-out/patrol/patrol",
+    "pages/add-store-detail/add-store-detail",
+    "pages/add-sale-detail/add-sale-detail",
+    "pages/search-product/search-product",
+    "pages/colleagues/colleagues",
+    "templates/add-contacts/add-contacts",
+    "pages/fill-in-record/fill-in-record",
+    "pages/fill-in-shop/fill-in-shop",
+    "pages/location/amap/amap",
+    "pages/login-fail/login-fail",
+    "pages/test/test"
+  ],
+  "window": {
+    "enableWK": "YES",
+    "enableDSL": true,
+    "defaultTitle": "签到",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": false,
+    "allowsBounceVertical": true,
+    "onReachBottomDistance": 100
+  },
+  "tabBar": {
+    "textColor": "#000000",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/entry/entry",
+        "icon": "static/icon/tab/customer.png",
+        "activeIcon": "static/icon/tab/customer_actived.png",
+        "name": "客户"
+      },
+      {
+        "pagePath": "pages/user/index/index",
+        "icon": "static/image/user.png",
+        "activeIcon": "static/image/user_active.png",
+        "name": "我的"
+      }
+    ]
+  },
+  "debug": true
+}

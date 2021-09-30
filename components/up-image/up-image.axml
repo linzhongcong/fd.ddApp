@@ -1,0 +1,16 @@
+<view class="up-image">
+  <view class="up-image-icom" catchTap="onAdd">
+    <image class="add-icom" mode="{{mode}}" data-item="{{dataset}}" src="/asset/icom/upload_img.svg" />
+  </view>
+
+  <block a:for="{{list}}">
+  <view class="up-image-content">
+    <view class="up-image-item">
+      <image class="image" mode="{{mode}}" src="{{item.objectUrl}}" 
+      data-index="{{index}}" onLoad="onLoadOver" onError="onError" catchTap="onPreview" /> 
+      <image class="delete-icom" mode="{{mode}}" src="/asset/icom/delete.svg" 
+      data-index="{{index}}" data-item="{{dataset}}" catchTap="onDelete" />
+    </view>
+  </view>
+  </block>
+</view>

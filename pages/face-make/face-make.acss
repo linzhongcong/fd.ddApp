@@ -1,0 +1,79 @@
+@import "../../utils/common/css/style.acss";
+
+page {
+  background: #f8f8f8;
+  line-height: 50rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+
+.form-body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-body input {
+  font-size: 26rpx;
+  width: 100%;
+}
+
+.form-main {
+  flex: 1 0 auto;
+}
+
+.form-box {
+  background: #fff;
+}
+
+.form-list {
+  width: 94%;
+  margin: 0 auto;
+  padding: 15rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.form-title {
+  color: #666;
+  text-indent: 0.5em;
+}
+
+.form-title text {
+  color: #F5222D;
+  margin-left: 10rpx;
+}
+
+.form-address {
+  position: relative;
+}
+
+.form-address input {
+  width: 600rpx;
+}
+
+.form-address image {
+  position: absolute;
+  right: 5%;
+  top: 0;
+}
+
+.form-footer {
+  flex: 0 0 auto;
+}
+
+.form-footer button {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+}
+
+.isdisabled {
+  background-color: #7FD0F4 !important;
+}
+
+.border-none {
+  border: none;
+}

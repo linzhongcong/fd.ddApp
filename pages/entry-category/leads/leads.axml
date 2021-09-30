@@ -1,0 +1,38 @@
+<view class="bg-white">
+  <!-- 头部组件 -->
+  <view id="header"><my-header onOk="handleOnOk"></my-header></view>
+  <!-- 头部组件 -->
+  <!-- 内容区域 -->
+  <scroll-view style="height: {{scrollViewHeight}};" scroll-y lower-threshold="{{100}}" scroll-top="{{backTop}}" onScrollToLower="onScrollToLower">
+    <view class="card card-flex border-bottom border-light-gray" onTap="goToPage" data-type="detail" data-id="{{item.id}}" a:for="{{dataList}}" key="leads{{index}}">
+      <view class="card-left">
+        <view class="title bolder">{{item.merchantName}}</view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">客户类型：</view>
+          <view class="row-text">{{item.merchantType}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 180rpx;">系统/门店名称：</view>
+          <view class="row-text">{{item.systemName}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width:122rpx;">门店地址：</view>
+          <view class="row-text">{{item.facadeAddress}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 100rpx;">负责人：</view>
+          <view class="row-text">{{item.followName}}</view>
+        </view>
+      </view>
+      <view class="card-right">
+        <view class="small-btn" catchTap="goToPage" data-type="visit" data-id="{{item.id}}" data-is-collect="{{item.isCollect}}">去拜访</view>
+      </view>
+    </view>
+    <view class="load-tips">{{loadTipsText}}</view>
+  </scroll-view>
+  <!-- 内容区域 -->
+  <view class="checkin" onTap="goToPage" data-type="checkin">
+    <image mode="scaleToFill" src="/static/icon/checkin.png"/>
+    <view class="checkin-bg"></view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents":{
+    "search-bar": "mini-ali-ui/es/search-bar/index",
+    "am-icon": "mini-ali-ui/es/am-icon/index",
+    "list": "mini-ali-ui/es/list/index",
+    "list-item": "mini-ali-ui/es/list/list-item/index"
+  }
+}

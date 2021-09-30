@@ -1,0 +1,146 @@
+.page {
+  padding: 0 0;
+}
+
+.required {
+  margin-left: 3rpx;
+  color: red;
+}
+
+.bgwhite {
+  background-color: white;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 75rpx;
+  padding: 0 25rpx;
+  line-height: 75rpx;
+  background: white;
+}
+
+.flex-item {
+  font-size: 30rpx;
+}
+
+.form {
+  margin-top: 20rpx;
+}
+
+.form-page-section-title {
+  height: 90rpx;
+  padding: 0;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+}
+
+.question {
+  margin-top: 30rpx;
+  padding: 0 25rpx;
+  background-color: white;
+}
+
+.question:first-child {
+  margin-top: 0;
+}
+
+.question-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  margin-left: 6rpx;
+}
+
+.radio-select {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  vertical-align: middle;
+}
+
+.am-radio {
+  border: 1rpx solid #ccc;
+  border-radius: 50%; 
+}
+
+.radio-text {
+  height: 80rpx;
+  margin-left: 5rpx;
+  line-height: 80rpx;
+}
+
+.btns-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  font-size: 26rpx;
+  line-height: 100%;
+  color: #00a1e9;
+  background-color: white;
+  border: none;
+}
+
+.btns-submit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 26rpx;
+}
+
+.btns-cancel {
+  width: 45%;
+  background-color: white;
+}
+
+.btns-comform {
+  width: 45%;
+  background-color: #00a1e9;
+}
+
+.btns-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.btns-reduce-icon {
+  position: relative;
+  top: 0rpx;
+  right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.tips-weak {
+  font-size: 24rxp;
+  color: #ccc;
+  margin: 20rpx 0 0 6rpx
+}
+
+.input {
+  font-size: 24rpx;
+}
+
+.textarea {
+  font-size: 24rpx;
+}
+
+.store-display .page-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.compare-records .page-section:last-of-type {
+  margin-bottom: 0;
+}

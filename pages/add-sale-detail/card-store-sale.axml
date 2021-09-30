@@ -1,0 +1,49 @@
+<template name="card-store-sale">
+<view class="card-template">
+
+<block a:for="{{facadeSaleDetail}}" a:for-index="cindex">
+<view class="card" a:key="*this">
+  <view class="card-item-first">
+    <view class="card-label">
+      <block a:if="{{item.fileItem.id}}">
+      <image style="border: 2rpx solid #ddd;" class="card-image" mode="scaleToFill" src="{{item.fileItem.url}}"/>
+      </block>
+      <block a:else>
+      <image style="border: 2rpx solid #ddd;" class="card-image" mode="scaleToFill" src="../../asset/icom/empty_img.svg"/>
+      </block>
+    </view>
+    <view class="card-content  card-content--flexstart">
+      <view class="card-content-brand">{{item.name}}</view>
+      <view class="card-content-price">零售价：{{item.price}}</view>
+    </view>
+    <view class="card-reduce-icon">
+      <image class="btns-reduce-icon" mode="aspectFit" src="/asset/icom/reduce.svg" 
+      data-cindex="{{cindex}}" data-type="store_sale" onTap="onReduce"/>  
+    </view>
+  </view>
+  <view class="form-line" style="margin: 0;"></view>
+  <view class="card-item">
+    <view class="card-label">门店销售价<text class="required">*</text></view>
+    <view class="card-content">
+      <input placeholder="点击填写" controlled class="input" value="{{item.sale_price}}" type="text"
+      data-cindex="{{cindex}}" data-id="{{item.id}}" data-type="sale_price" onInput="handleInputChangeFacadeDetail" />
+      </view>
+  </view>
+  <view class="form-line" style="margin: 0;"></view>
+  <view class="card-item">
+    <view class="card-label">门店库存<text class="required">*</text></view>
+    <view class="card-content">
+      <input placeholder="点击填写" controlled class="input" value="{{item.inventory}}" type="text"
+      data-cindex="{{cindex}}" data-id="{{item.id}}" data-type="inventory" onInput="handleInputChangeFacadeDetail" />
+    </view>
+  </view>
+  <view class="form-line" style="margin: 0;"></view>
+</view>
+</block>
+
+<button class="btns-add bgwhite" style="margin-top: 0;" size="default" data-type="store_sale" onTap="onAdd">
+  <image class="btns-icon" mode="aspectFit" src="/asset/icom/add.svg"/><text>添加产品</text>
+</button>
+
+</view>
+</template>

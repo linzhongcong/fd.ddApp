@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pagination": "mini-ali-ui/es/pagination/index",
+    "am-icon": "mini-ali-ui/es/am-icon/index"
+  }
+}

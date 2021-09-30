@@ -1,0 +1,109 @@
+<view class="page">
+  <scroll-view class="page-content" scroll-y lower-threshold="{{100}}" onScrollToLower="onScrollToLower">
+    <!-- 卡片 -->
+    <view class="card crad-block border-none bg-white mb-10 f-28">
+      <view class="title f-32">{{detailData.name}}</view>
+      <view class="row">
+        <view class="row-label">公司名称</view>
+        <view class="row-text">{{detailData.merchantName}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">系统/门店名称</view>
+        <view class="row-text">{{detailData.systemName}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">客户类型</view>
+        <view class="row-text">{{detailData.merchantType}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店编号</view>
+        <view class="row-text">{{detailData.number}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">零售负责人</view>
+        <view class="row-text">{{detailData.followBy}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">进驻品牌</view>
+        <view class="row-text">{{detailData.inBrands}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店地址</view>
+        <view class="row-text">{{detailData.address}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">城市等级</view>
+        <view class="row-text">{{detailData.cityLevel}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店商圈</view>
+        <view class="row-text">{{detailData.tradeArea}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">商圈级别</view>
+        <view class="row-text">{{detailData.tradeAreaLevel}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店类型</view>
+        <view class="row-text">{{detailData.type}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店规模</view>
+        <view class="row-text">{{detailData.size}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">门店商品类型</view>
+        <view class="row-text">{{detailData.goodsType}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label">BA情况</view>
+        <view class="row-text">{{detailData.hasBa > 0 ? '有BA' : '无BA'}}</view>
+      </view>
+    </view>
+    <!-- 选项卡 -->
+    <view>
+      <tabs 
+        tabs="{{tabList}}"
+        tabsName="currentTabIndex"
+        activeTab="{{currentTabIndex}}"
+        tabContentHeight="{{tabContentHeight}}"
+        stickyBar="{{true}}"
+        swipeable="{{false}}"
+        tabBarUnderlineColor="#00A1E9"
+        tabBarActiveTextColor="#00A1E9"
+        onTabFirstShow="handleTabFirstShow">
+        <tab-content key="0">
+          <view id="tab-content-0" style="padding: 10px;">
+            <view class="card card-round" a:for="{{visitRecordList}}" onTap="goToPage" data-id="{{item.checkinId}}" data-checkin-way="{{item.checkinWay}}" data-type="detail" key="visit{{index}}">
+              <view class="title">{{item.signin_at}}</view>
+              <view class="content">
+                <view class="row justify-space">
+                  <view class="item">
+                    <view class="label">签到人：</view>
+                    <view class="text">{{item.created_by}}</view>
+                  </view>
+                  <view class="item">
+                    <view class="label" style="min-width: 122rpx;">签到类型：</view>
+                    <view class="text">{{item.checkinWayText}}</view>
+                  </view>
+                </view>
+                <view class="row">
+                  <view class="label" style="min-width: 122rpx;">签到地点：</view>
+                  <view class="text">{{item.address}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </tab-content>
+      </tabs>
+    </view>
+    <!-- 提示 -->
+    <view class="load-tips">{{loadTipsText}}</view>
+  </scroll-view>
+  <view id="footer" class="page-footer page-footer-tabs">
+    <view class="tabs-item" onTap="handleOnTabBarClick" data-type="facade">
+      <image mode="scaleToFill" src="/static/icon/to_facade.png"/>
+      <view style="margin-top: 6rpx;">下店</view>
+    </view>
+  </view>
+</view>

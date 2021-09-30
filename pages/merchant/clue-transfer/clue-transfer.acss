@@ -1,0 +1,83 @@
+
+.page-description {
+  font-size: 30rpx;
+}
+
+.page-section-title {
+  font-size: 30rpx;
+}
+
+.page-section-btns {
+  margin-top: 100rpx;
+}
+
+.page-section-btns button {
+  width: 100%;
+}
+
+.picker {
+  width: 100%;
+  padding-left: 16rpx;
+}
+
+.pick-label {
+  width: 120rpx;
+  margin-top: 20rpx;
+  margin-right: 67rpx;
+  font-size: 24rpx;
+}
+
+.label-null {
+  color: #ccc
+}
+
+.picker-input {
+  display: none;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.input {
+  height: 100%;
+  margin-top: 32rpx;
+  line-height: 100%;
+  font-size: var(--font-subtitle-size);
+}
+
+.image-box {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 340prx;
+}
+
+.image-box-icom {
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.image-box-item {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx 20rpx;
+  border: 1rpx solid #ddd;
+  box-sizing: border-box;
+}
+
+.image-box-image {
+  width: 100%;
+  height: 100%;
+}
+
+.image-box-text {
+  position: absolute;
+  z-index: 9999;
+}

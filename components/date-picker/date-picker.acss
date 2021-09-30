@@ -1,0 +1,14 @@
+.picker-button-group{ 
+  font-size: 28rpx; 
+  padding:  24rpx 48rpx; 
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.btn-left {
+  color: #999
+}
+
+.btn-right {
+  color: #00A1E9
+}

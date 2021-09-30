@@ -1,0 +1,21 @@
+<view class="entry">
+  <view class="entry-area">
+    <view class="entry-title">客户管理</view>
+    <flex class="entry-content" wrap="wrap">
+      <view class="entry-content-box" a:for="{{customerNavList}}" key="customer + {{index}}" data-route="{{item.route}}" onTap="goToPage">
+        <view class="icon" style="background-image: url('{{item.icon}}')"></view>
+        <view style="color: {{item.name === 'none' ? '#fff': '#000'}}">{{item.name}}</view>
+      </view>
+    </flex>
+  </view>
+  <view class="entry-area">
+    <view class="entry-title">门店管理</view>
+    <flex class="entry-content" wrap="wrap">
+      <view class="entry-content-box" a:for="{{facadeNavList}}" key="facade + {{index}}" data-route="{{item.route}}" onTap="goToPage">
+        <view class="icon" style="background-image: url('{{item.icon}}')"></view>
+        <view style="color: {{item.name === 'none' ? '#fff': '#000'}}">{{item.name}}</view>
+      </view>
+    </flex>
+  </view>
+  <view class="checkout" a:if="{{isSign}}" onTap="handleCheckout">签退</view>
+</view>

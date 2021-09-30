@@ -1,0 +1,32 @@
+<import src="./street_worship.axml" />
+<import src="./return_visit.axml" />
+<import src="./no_shop.axml" />
+<import src="./patrol.axml" />
+<import src="./other.axml" />
+
+<block a:if="{{detailType === 'street_worship'}}">
+  <template is="street_worship" data="{{signInfo}}"></template>
+</block>
+
+<block a:elif="{{detailType === 'return_visit'}}">
+  <template is="return_visit" data="{{signInfo}}"></template>
+</block>
+
+<block a:elif="{{detailType === 'maintain'}}">
+  <template is="return_visit" data="{{signInfo}}"></template>
+</block>
+
+<block a:elif="{{detailType === 'no_shop'}}">
+  <template is="no_shop" data="{{signInfo}}"></template>
+</block>
+
+<block a:elif="{{detailType === 'patrol'}}">
+  <template is="patrol" data="{{signInfo}}"></template>
+</block>
+
+<block a:else>
+  <template is="other" data="{{signInfo}}"></template>
+</block>
+
+<button style="margin-bottom:0;" type="primary" onTap="backTo">返回</button>
+

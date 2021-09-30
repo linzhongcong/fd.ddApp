@@ -1,0 +1,7 @@
+{
+  "backgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "flex": "mini-ali-ui/es/flex/index",
+    "flex-item": "mini-ali-ui/es/flex/flex-item/index"
+  }
+}

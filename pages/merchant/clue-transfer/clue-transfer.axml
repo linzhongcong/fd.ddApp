@@ -1,0 +1,111 @@
+<view class="page">
+  <view class="page-description" style="border-bottom: 2rpx solid #ddd">请确认对应客户信息！提交后不可更改</view>
+
+  <form onSubmit="onSubmit" onReset="onReset">
+    <view class="page-section" style="padding: 0rpx 24rpx;">
+      <view class="form-row">
+        <view class="form-row-label">公司名称<text class="required">*</text> </view>
+        <view class="form-row-content" onTap="{{form.company_info_id === 0 || form.leads_type === 'invalid' ? 'goBusinessSearch' : ''}}">   
+          <input name="merchant_name" value="{{form.merchant_name}}" class="input" placeholder="公司名称"  disabled/>
+        </view>
+      </view>
+      <view class="form-line"></view>
+      <!-- 有效线索  类型，系统/门店名称，，门店地址不填 -->
+      <!-- <block a:if="{{form.leads_type === 'invalid'}}"> -->
+      <view class="form-row">
+        <view  class="form-row-content"> 门店类型 <text class="required">*</text></view>
+        <picker onChange="onPopupClose" value="{{storeTypesIndex}}" range="{{storeTypes}}" range-key="label">
+          <view class="form-row-content" style="display: flex; flex-direction: row;">
+            <view class="picker">
+              <label a:if="{{ storeType === '' }}" class="label-null">请选择客户类型</label>
+              <label a:else>{{ storeTypes[storeTypesIndex].label }}</label>
+              <input name="merchant_type" value="{{storeType}}" disabled class="picker-input" />
+            </view>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">系统/门店名称 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input class="input no-padding" placeholder="系统/门店名称" name="name" value="{{form.name}}"  />
+        </view>
+      </view>
+
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">门店地址 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input name="address" value="{{form.address}}" class="input" placeholder="门店地址" />
+        </view>
+      </view>
+      <!-- </block> -->
+      <view class="form-line" />
+      <view class="form-row">
+        <!-- <view class="form-row-label">{{form.leads_type === 'invalid' ? '预计门店数量' : '门店数量'}} <text style="color: red;">*</text></view> -->
+        <view class="form-row-label">门店数量 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input type="number" name="estimate_facade_number" value="{{form.estimate_facade_number == 0 ? '' : form.estimate_facade_number}}" class="input" placeholder="门店数量"  />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">联系人姓名 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input name="contact_name" value="{{form.contact_name}}" class="input" placeholder="联系人姓名" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">联系人职务 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input name="contact_job" value="{{form.contact_job}}" class="input" placeholder="联系人职务" />
+        </view>
+      </view>
+      <view class="form-line" />
+      <view class="form-row">
+        <view class="form-row-label">联系人电话 <text style="color: red;">*</text></view>
+        <view class="form-row-content">
+          <input name="contact_phone" value="{{form.contact_phone}}" class="input" placeholder="联系人电话" />
+        </view>
+      </view>
+      <view class="form-line"></view>
+    </view>
+    <view class="page-section" style="margin-bottom: 0;">
+      <view class="page-section-title">凭证上传</view>
+      <view class="page-section-title" style="margin-top: 15rpx;">微信添加成功页 <text style="color: red;">*</text></view>
+      <view class="page-section-demo" style="padding: 10rpx; 0;" >
+        <view class="image-box">
+          <image onTap="onUpImageAddSuccess" mode="scaleToFill" class="image-box-icom" src="/static/image/upload_img.svg"/>
+          <view a:for="{{ imageAddSuccess }}" class="image-box-item">
+            <view style="position: relative;" onTap="delImg" data-index='{{index}}' data-name="add-success">
+              <icon type="clear" size="15" class="image-box-text"/>
+            </view>
+            <image src='{{ item }}' onTap="previewImg" data-index='{{index}}' data-name="add-success"  mode="scaleToFill" class="image-box-image" ></image>
+          </view>
+        </view>
+      </view>
+      <view class="page-section-title" style="margin-top: 15rpx;">微信备注页 <text style="color: red;">*</text></view>
+      <view class="page-section-demo" style="padding: 10rpx; 0;" >
+        <view class="image-box">
+          <image onTap="onUpImageDec" mode="scaleToFill" class="image-box-icom" src="/static/image/upload_img.svg"/>
+          <view a:for="{{ imageDec }}" class="image-box-item">
+            <view style="position: relative;" onTap="delImg" data-index='{{index}}' data-name="dec">
+              <icon type="clear" size="15" class="image-box-text"/>
+            </view>
+            <image src='{{ item }}' onTap="previewImg" data-index='{{index}}' data-name="dec"  mode="scaleToFill" class="image-box-image" ></image>
+          </view>
+        </view>
+      </view>
+      <view class="page-section-btns">
+        <button class="btn-submit" type="primary" formType="submit">转为潜在客户</button>
+      </view>
+    </view>
+  </form>
+</view>
+
+<block a:if="{{form.company_info_id === 0 || form.leads_type === 'invalid' }}">
+<query-company show="{{businessFlag}}" animation="{{true}}" privilege="{{true}}" onReceive="onReceiveBusiness" onClose="onClose"></query-company>
+</block>
+

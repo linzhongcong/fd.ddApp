@@ -1,0 +1,11 @@
+{
+  "titlePenetrate": "线索",
+  "usingComponents":{
+    "query-company": "/components/query-company/query-company",
+    "query-shop": "/components/query-shop/query-shop",
+    "list": "mini-ali-ui/es/list/index",
+    "list-item": "mini-ali-ui/es/list/list-item/index",
+    "am-icon": "mini-ali-ui/es/am-icon/index",
+    "search-bar": "mini-ali-ui/es/search-bar/index"
+  }
+}

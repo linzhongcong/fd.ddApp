@@ -1,0 +1,6 @@
+{
+    "defaultTitle": "正在处理中...",
+    "usingComponents": {
+        "message": "mini-ali-ui/es/message/index"
+    }
+}

@@ -1,0 +1,280 @@
+@import "/utils/common/css/style.acss";
+
+page{
+  letter-spacing:2rpx;
+  background: #F8F8F8;
+}
+
+.user-head{
+  height: 370rpx;
+  background: linear-gradient(90deg, #00A1E9 0%, #087FD1 100%);
+  color: #fff;
+  padding: 0 30rpx;
+}
+
+
+.user-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-top-left {
+  display: flex;
+  align-items: center;
+  width: 60vw;
+}
+
+.user-top-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 160rpx;
+}
+
+.sign-count {
+  font-size: 32rpx;
+  font-weight: 400;
+  margin-bottom: 8rpx;
+}
+
+.sign-text {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+.user-avatar-wrap {
+  margin-right: 20rpx;
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.user-avatar {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+}
+
+.user-department {
+  display: block;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-right: 16rpx;
+  display: block;
+}
+
+.name-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 45rpx;
+}
+
+.name-wrap .user-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 86rpx;
+  height: 32rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+  margin-top: 2rpx;
+  padding: 0 4rpx;
+  border-radius: 83rpx;
+  background: rgba(0,0,0,0.1);
+}
+
+.user-department {
+  font-size: 26rpx;
+  font-weight: 400;
+  margin-top: 8rpx;
+  line-height: 1.5;
+}
+
+.user-job {
+  padding: 0 20rpx;
+  background: #0288cb;
+  border-radius: 20rpx;
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-top {
+  margin-top: 40rpx;
+}
+
+.user-height {
+  height: 60rpx;
+}
+
+.user-main-top {
+  margin-top: 20rpx;
+}
+
+.user-target {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 100%;
+  margin: 30rpx 0;
+}
+
+.user-statistics {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 690rpx;
+  height: 184rpx;
+  background: #fff;
+  box-shadow: 0 0 24rpx rgba(0, 161, 233, 0.2);
+  border-radius: 10rpx;
+  margin: 0 30rpx;
+  margin-top: -92rpx;
+  margin-bottom: 10rpx;
+
+}
+
+.user-statistics .statistics-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  overflow: hidden;
+}
+
+.statistics-item .statistics-count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: #00a1e9;
+  font-weight: 700;
+  font-size: 30rpx;
+  overflow: hidden;
+  max-width: 207rpx;
+}
+
+.statistics-item .statistics-text {
+  color: #999;
+  opacity: .8;
+  font-size: 24rpx;
+  font-weight: 400;
+  margin-top: 16rpx;
+}
+
+
+/* 签到详情 */
+.sign-info{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.info-show{
+  margin-top: 20rpx;
+}
+
+.info-date{
+  display: flex;
+}
+
+.style-list{
+  width: 10rpx;
+  background: #00A1E9;
+  margin-right: 20rpx;
+}
+
+.info-card{
+  margin-top: 20rpx;
+  box-shadow:0px 0px 10px rgba(0,0,0,0.08);
+  border-radius:10px;
+  padding-bottom: 20rpx;
+  background: #fff;
+}
+
+.info-border{
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  line-height: 70rpx;
+  height: 70rpx;
+  padding: 0 24rpx;
+}
+
+.main-info {
+  padding: 0 24rpx;
+}
+
+.sign-company{
+  color: #00A1E9;
+  font-size: 26rpx;
+  width: 380rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.sign-con{
+  line-height: 60rpx;
+  display: flex;
+}
+
+.sign-con view:last-child{
+  width: 70%;
+  word-wrap:break-word;
+}
+
+.sign-title{
+  color: #999;
+  width: 30%
+}
+
+.sign-img{
+  display: flex;
+}
+
+.sign-img image{
+  border: 1px solid #ddd;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+
+/* 底部提示文本 */
+.user-bottom{
+  color: #ccc;
+  width: 100%;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 40rpx;
+  padding: 4% 0;
+}
+
+.user-btn {
+  color: #999; 
+  padding: 20rpx 0;
+}
+
+.user-btn-box {
+  width: 92%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* justify-content: center; */
+}
+
+.user-btn-box image {
+  width: 32rpx;
+  height: 32rpx;
+  padding-right: 10rpx;
+}

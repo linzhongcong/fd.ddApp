@@ -1,0 +1,145 @@
+<view class="page">
+<view class="flex-row">
+  <view class="flex-item">客户门店</view>
+  <view class="flex-item">{{facadeName}}</view>
+</view>
+
+<form class="form">
+  <view class="store-display">
+
+    <view class="bgwhite">
+      <title className="form-page-section-title">门店陈列</title>
+      <view class="form-line" style="margin-right: 25rpx;"></view>        
+    </view>
+
+    <block a:for="{{questions_store_displays}}" a:for-item="questions" a:for-index="sindex">
+    <view class="page-section" a:kSey="*this">
+
+      <view class="question"> 
+        <block a:for="{{questions}}" a:for-item="question" a:for-index="qindex">
+        <view class="question-item" a:key="*this">
+
+          <view class="question-title">
+          <view>{{qindex+1}}.{{question.title}}<text class="required">*</text></view>
+            <block a:if="{{sindex > 0 && qindex === 0 }}">
+              <image class="btns-reduce-icon" style="align-self: center;" 
+              mode="aspectFit" src="/asset/icom/reduce.svg" 
+              data-sindex="{{sindex}}" data-type="store_display" onTap="onReduce"/>
+            </block>
+          </view>
+
+          <block a:if="{{question.type === 'image'}}">
+            <view class="question-option">
+              <up-image list="{{question.value}}" sourceType="{{['camera']}}" mode="scaleToFill" dataset="{{sindex}}" onReceive="onReceiveStore" onDelete="onDeleteStore"></up-image>
+            </view>
+          </block>
+
+          <block a:else>
+            <view class="form-line"></view>
+            <view class="question-option">
+              <radio-group class="radio-group" data-sindex="{{sindex}}" data-qindex="{{qindex}}" onChange="handleRadioChange">
+                <block  a:for="{{question.options}}" a:for-item="option" a:for-index="oindex">
+                
+                  <label class="radio-select" a:key="label-{{`s_${sindex}-q_${question.id}-o_${option.id}`}}" 
+                  for="{{`s_${sindex}-q_${question.id}-o_${option.id}`}}" >
+                  
+                    <am-radio id="{{`s_${sindex}-q_${question.id}-o_${option.id}`}}" 
+                    value="{{`${option.label};${option.questionId};${option.id}`}}" 
+                    checked="{{option.checked}}" />
+                    <view class="radio-text">{{option.label}}</view>
+                  </label>
+                  <view class="form-line"></view>
+
+                </block>
+              </radio-group>
+            </view>
+
+          </block>
+        
+        </view>
+        </block>
+      </view>
+
+    </view>
+    </block>
+
+    <button class="btns-add bgwhite" style="margin-top: 0;" size="default" data-type="store_display" onTap="onAdd">
+      <image class="btns-icon" mode="aspectFit" src="/asset/icom/add.svg"/><text>添加位置</text>
+    </button>
+    
+  </view>
+
+  <view class="page-section">
+    <view class="question">
+      <view class="question-title">
+        门店优秀陈列
+      </view>
+      <view class="tips-weak">
+        包括但不限于柜台、立架、地堆和花车等
+      </view>
+      <view class="question-option">
+        <up-image list="{{questions_excellent_displays}}" sourceType="{{['camera']}}"  onReceive="onReceive" onDelete="onDelete"></up-image>
+      </view>
+    </view>  
+  </view>
+
+    <view class="compare-records">
+    <view class="bgwhite">
+    <title className="form-page-section-title">竞对记录</title>
+    <view class="form-line" style="margin-right: 25rpx;"></view>  
+    <view class="tips-weak" style="margin-left: 35rpx">竞对产品：近一月门店内同类别销量前三的产品</view>      
+    </view>
+    <block a:for="{{questions_compare_records}}" a:for-item="questions" a:for-index="sindex">
+    <view class="page-section" a:key="*this">
+    <view class="question">
+      <block a:for="{{questions}}" a:for-item="question" a:for-index="qindex">
+        <view class="question-item" a:key="*this">
+        <view class="question-title">
+          <view>{{qindex+1}}.{{question.title}}<text class="required">*</text></view>
+          <block a:if="{{sindex > 0 && qindex === 0 }}">
+            <image class="btns-reduce-icon" style="align-self: center;" mode="aspectFit" src="/asset/icom/reduce.svg" 
+            data-sindex="{{sindex}}" data-type="compare_records" onTap="onReduce"/>
+          </block>
+        </view>
+        
+        <block a:if="{{question.type === 'image'}}">
+          <view class="question-option">
+            <up-image list="{{question.value}}" sourceType="{{['camera']}}" mode="scaleToFill" dataset="{{sindex}}" onReceive="onReceiveCompare" onDelete="onDeleteCompare"></up-image>
+          </view>
+        </block>
+
+        <block a:elif="{{question.type === 'textarea'}}">
+          <view class="question-option">
+            <textarea placeholder="点击填写" class="textarea" show-count auto-height maxlength="{{-1}}" value="{{question.value}}"
+            data-id="{{question.id}}" data-sindex="{{sindex}}" data-qindex="{{qindex}}" onBlur="handleInputChange" />
+          </view>
+          <view class="form-line" style="margin-left: 0;"></view>
+        </block>
+
+        <block a:else>
+          <view class="question-option" >
+            <input placeholder="点击填写" class="input" style="min-height: 72rpx; padding: 4rpx 10rpx 16px;" value="{{question.value}}" 
+            data-id="{{question.id}}" data-sindex="{{sindex}}" data-qindex="{{qindex}}" onBlur="handleInputChange" />
+          </view>
+          <view class="form-line" style="margin-left: 0;"></view>
+        </block>
+        </view>
+      </block>
+    </view>
+    </view>
+    </block>
+
+    <button class="btns-add bgwhite" style="margin-top: 0;" size="default" data-type="compare_records" onTap="onAdd">
+        <image class="btns-icon" mode="aspectFit" src="/asset/icom/add.svg"/><text>添加竞对</text>
+      </button>
+    </view>
+  <view class="page-section" style="margin-bottom: 0;">
+    <view class="btns-submit">
+      <button class="btns-cancel" size="default" onTap="onCancel">取消</button>
+      <button class="btns-comform" size="default" type="primary" onTap="onSubmit" >保存</button>
+    </view>
+  </view>
+
+</form>
+
+</view>

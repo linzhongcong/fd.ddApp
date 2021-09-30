@@ -1,0 +1,73 @@
+<view class="component"  disable-scroll="{{true}}" >
+  <form onSubmit="onSubmit" disable-scroll="{{true}}">
+    <view class="page-section" style="margin-top: 0;">
+      <view class="page-section-title">
+        <text class="placeholder"></text>
+        <text>客户类型</text>
+      </view>
+      <view class="page-section-demo flex-wrop">
+        <block a:for="{{shopTypeG}}">
+          <view class="item {{ item.isSelected ?  'item-active' : ''}}" 
+            data-item="{{item}}" onTap="shopClick">
+            <text>{{item.label}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <block a:if="{{showRegion}}">
+    <view class="page-section" style="padding-bottom: 10rpx; ">
+      <view class="page-section-title">
+        <text class="placeholder"></text>
+        <text>地区</text>
+      </view>
+      <view class="page-section-demo flex-wrop">
+        <block a:for="{{merchantRegion}}">
+          <view class="item-region {{ item.isSelected ?  'item-region-active' : ''}}" 
+            data-item="{{item}}" catchTap="regionClick">
+            <text>{{item.region}}</text>
+            <view class="item-region-delete" data-item="{{item}}" catchTap="deleRegion" >
+              <image style="width: 30rpx; height: 30rpx;"  mode="scaleToFill" src="/asset/icom/reduce-blue.svg"/>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="btn-text" onTap="addRegion"> 添加地区选项  + </view>
+    </view>
+    </block>
+
+    <view class="form-btns">
+      <button class="btns " type="ghost" onTap="onReset">重置</button>
+      <button class="btns " type="primary" formType="submit">确定</button>
+    </view>
+  </form>
+
+  <popup show="{{showRegionPicker}}" position="bottom" disable-scroll="{{true}}" onClose="displayer">
+    <view class="my-picker" >
+      <view class="region-picker">
+        <view class="btn-pircker">
+          <text onTap="displayer" class="btn-pircker-text">取消</text>
+          <text onTap="confirm" class="btn-pircker-text">确定</text>
+        </view>
+        <picker-view value="{{value}}" onChange="onChange">
+          <picker-view-column>
+            <view a:for="{{provinces}}">
+              {{item.val}}
+            </view>
+          </picker-view-column>
+          <picker-view-column>
+            <view a:for="{{citys}}">
+              {{item.val}}
+            </view>
+          </picker-view-column>
+          <picker-view-column>
+            <view a:for="{{areas}}">
+              {{item.val}}
+            </view>
+          </picker-view-column>
+        </picker-view>    
+      </view>
+    </view>
+  </popup>
+
+</view>

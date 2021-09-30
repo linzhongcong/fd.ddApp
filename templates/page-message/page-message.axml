@@ -1,0 +1,9 @@
+<view>
+  <message title="{{title}}" type="{{type}}">
+    <view slot="tips">
+      <text>{{subtitle}}</text> 
+      <text style="margin: 0 5rpx;">{{seconds}}</text>
+      <text>{{content}}</text>
+    </view>
+  </message>
+</view>

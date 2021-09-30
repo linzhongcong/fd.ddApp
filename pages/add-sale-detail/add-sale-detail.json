@@ -1,0 +1,12 @@
+{
+  "defaultTitle": "门店产品与POS",
+  "usingComponents": {
+  "up-image": "/components/up-image/up-image",
+  "am-icon": "mini-ali-ui/es/am-icon/index",
+  "am-radio": "mini-ali-ui/es/am-radio/index",
+  "flex": "mini-ali-ui/es/flex/index",
+  "flex-item": "mini-ali-ui/es/flex/flex-item/index",
+  "container": "mini-ali-ui/es/container/index",
+  "title": "mini-ali-ui/es/title/index"
+ }
+}

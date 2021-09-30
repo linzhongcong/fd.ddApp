@@ -1,0 +1,229 @@
+.merchant {
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-subtitle-size)
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 50rpx;
+  margin: 20rpx 0rpx;
+  padding: 20rpx;
+  background: white;
+  border: 1rpx solid #ccc;
+}
+
+.filter-active {
+  color: #00A1E9;
+}
+
+.operation-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+  width: 140rpx;
+  height: 48rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 50rpx;
+}
+
+.operation-btn-title {
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 36rpx;
+  color:rgba(153,153,153,1);
+  padding-left: 2rpx;
+  margin-left: 8rpx;
+}
+
+/* 列表卡片 */
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  background:rgba(255,255,255,1);
+  font-weight: 700;
+  line-height: 40rpx;
+  color:rgba(0,161,233,1);
+  border-bottom: 2rpx solid #ddd;
+  padding: 0 24rpx;
+  margin-top: 20rpx; 
+  overflow: hidden;
+}
+
+.card-title .visit-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 14rpx;
+}
+
+.card-title-name {
+  max-width: 450rpx;
+  padding-bottom: 14rpx;
+}
+
+.visit-wrap .visit-img {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 6rpx;
+}
+
+.visit-wrap .title-css {
+  color: #00a1e9;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.card-content {
+  margin-top: 24rpx;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+}
+
+.content-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 24rpx 0;
+}
+
+.list-title {
+  display: flex;
+  padding-bottom: 8rpx;
+}
+
+.list-title image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.title-css {
+  font-weight: 400;
+  line-height: 36rpx;
+  color:rgba(153,153,153,1);
+  opacity: 1;
+}
+
+.list-message {
+  font-weight: 500;
+  line-height: 36rpx;
+  color:rgba(51,51,51,1);
+  opacity: 1;
+}
+
+/* tab 页 */
+.tabs {
+  font-size: 24rpx; 
+  color: #ccc
+}
+
+.tab-content {
+  height: 100%;
+  font-size: 24rpx;
+  background: transparent;
+}
+
+.am-tabs-bar {
+  font-size: 24rpx;
+}
+
+.merchant-card {
+  opacity: 1;
+  margin: 10rpx 30rpx 0rpx;
+  padding-bottom: 20rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  background:rgba(255,255,255,1);
+}
+
+.leadsStatus {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.leadsStatusTxt {
+  font: 28rpx;
+  color: red;
+  margin-right: 24rpx;
+}
+
+.float-left-icon {
+  position: fixed;
+  right: 30rpx;
+  bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  background: #00A1E9;
+  border: 1rpx solid #00A1E9;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.no-data {
+  color: #ccc;
+  width: 100%;
+  text-align: center;
+  line-height: 40rpx;
+  padding: 5% 0;
+  margin-top: 28vh;
+}
+
+/* 抽屉动画 */
+.my-popup {
+	position: relative
+}
+
+.my-popup-content {
+	position: fixed
+}
+
+.my-popup-mask {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.75);
+	opacity: 0
+}
+
+.my-popup-right {
+	transform: translateX(100%);
+	right: 0;
+	top: 0;
+	bottom: 0
+}
+
+.my-popup-show .my-popup-content {
+	transform: none
+}
+
+.my-popup-show .my-popup-mask {
+	visibility: visible;
+	opacity: 1
+}
+
+.my-popup.animation .my-popup-content {
+	transition: all .2s linear
+}
+
+.my-popup.animation .my-popup-mask {
+  transition: all .2s linear  
+}

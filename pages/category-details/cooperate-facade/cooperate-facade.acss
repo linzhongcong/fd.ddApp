@@ -1,0 +1,10 @@
+@import '/utils/common/css/style-v2.acss';
+
+.am-tabs-bar-title {
+  font-size: 28rpx;
+}
+
+.row-label {
+  min-width: 200rpx;
+}
+

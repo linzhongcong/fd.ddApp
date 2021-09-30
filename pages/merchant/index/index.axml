@@ -1,0 +1,304 @@
+<view class="merchant">
+
+  <!-- <view class="search">
+    <search-bar placeholder="请输入公司名称/系统/门店名称" 
+      showComfirmButton="{{true}}" comfirmButtonText="搜索"
+      onInput="handleInput" onSubmit="handleSubmit" onClear="handleClear" />
+  </view> -->
+
+  <view class="filter">
+    <view class="filter-one">
+      <picker onChange="onPickerChange" value="{{pickerIndex}}" range="{{pickers}}" range-key="label">
+        <view class="operation-btn-title filter-active"  style="vertical-align: middle;">
+          {{pickers[pickerIndex].label}}
+          <image mode="scaleToFill" src="/static/image/sanjiao.png" style="height: 25rpx; width:25rpx; vertical-align: middle;"/>
+        </view>
+      </picker>
+    </view>
+    <view onTap="onFilter" class="{{isFilterBtnActive ? 'filter-active' : ''}}">
+      <image mode="scaleToFill" src="/static/image/filer.png" style="height: 25rpx; width:25rpx;" />
+      <text class="operation-btn-title" style="{{isFilterBtnActive ? 'color: #00A1E9;' :''}}">筛选</text> 
+    </view>
+  </view>
+
+  <tabs tabs="{{tabs}}"
+    className="tabs"
+    tabBarCls="tabs"
+    onTabClick="handleTabClick"
+    activeTab="{{activeTab}}"
+    tabBarActiveTextColor="#00A1E9"
+    tabsName="value"
+    showPlus="{{false}}"
+    swipeable="{{false}}"
+    capsule="{{false}}"
+    hasSubTitle="{{false}}"
+    tabBarUnderlineWidth="26rpx"
+    stickyBar="{{false}}">
+
+    <block a:for="{{tabs}}" a:for-item="tabItem" a:for-index="tabIndex">
+      <tab-content key="{{tabIndex}}" tabId="{{tabIndex}}" activeTab="{{activeTab}}" a:if="{{tabIndex === 0}}">
+        <view class="tab-content">
+          <block a:if="{{eadsList.length > 0}}">
+            <view class="merchant-card" a:for="{{eadsList}}" data-index="{{index}}">
+              <view class="card-title">
+                <view class="card-title-name">{{item.merchantName}}</view>
+                <block a:if="{{pickers[pickerIndex].value === 'own'}}">
+                  <view class="visit-wrap" data-type="visit" data-item="{{item}}" onTap="handleJumpVisit">
+                  <text style="margin-right: 15rpx;">{{item.level}}</text>
+                  <image class="visit-img" mode="scaleToFill" src="/static/image/visit.png"/>
+                  <text class="title-css">去拜访</text>
+                  </view>
+                </block>
+                <block a:else>
+                  <view class="visit-wrap" data-type="eads" data-item="{{item}}"  onTap="{{item.associateId === 0 ? 'handlerCollect' : 'handlerCollectCancel'}}">
+                      <text style="margin-right: 15rpx;">{{item.level}}</text>
+                      <image class="visit-img" mode="scaleToFill" src="/static/image/visit.png"/>
+                      <text class="title-css">{{item.associateId === 0?  '收藏' : '已收藏'}}</text>
+                  </view>
+                </block>
+              </view>
+     
+              <view class="card-content" data-type="detail" data-item="{{item}}" onTap="{{picker === 'all' ? '' : 'handleJumpDetail' }}">
+                <view class="content-list leadsStatus">
+                  <view>
+                    <view class="list-title">
+                      <image mode="scaleToFill" src="/static/image/time.svg"/>
+                      <view class="title-css">
+                        客户类型：
+                      </view>
+                      <view class="list-message">
+                          <text>{{merchantTypesObj[item.merchantType]}}</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="leadsStatusTxt" a:if="{{picker === 'own'}}">{{leadsStatusBox[item.leadsStatus]}}</view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/store.svg"/>
+                    <view class="title-css">
+                      创建时间：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.signin_at}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/address.svg"/>
+                    <view class="title-css">
+                      系统/门店名称：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.facadeName}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/visit.svg"/>
+                    <view class="title-css ">
+                      门店地址：
+                    </view>
+                  </view>
+                  <view class="list-message ">
+                    {{item.facadeAddress}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <block a:else>
+            <view class="no-data">
+              <image style="width: 280rpx; height: 280rpx;" mode="scaleToFill" src="/static/image/no-data.png"/>
+              <view> 暂无客户数据</view>
+            </view>
+          </block>
+        </view>
+      </tab-content>
+
+
+      <tab-content key="{{tabIndex}}"tabId="{{tabIndex}}" activeTab="{{activeTab}}" a:elif="{{tabIndex === 1}}">
+        <view class="tab-content">
+          <block a:if="{{potentialList.length > 0}}">
+            <view class="merchant-card" a:for="{{potentialList}}" data-index="{{ index }}">
+              <view class="card-title">
+                <view class="card-title-name">{{item.merchantName}}</view>
+                <block a:if="{{pickers[pickerIndex].value === 'own'}}">
+                  <view class="visit-wrap" data-type="visit" data-item="{{item}}" onTap="handleJumpVisit">
+                      <text style="margin-right: 15rpx;">{{item.level}}</text>
+                      <image class="visit-img" mode="scaleToFill" src="/static/image/visit.png"/>
+                      <text class="title-css">去拜访</text>
+                  </view>
+                </block>
+                <block a:else>
+                  <view class="visit-wrap" data-type="eads" data-item="{{item}}"  onTap="{{item.salesmanId === 0 ? 'handlerReceive' : 'handlerReceiveCancel'}}">
+                      <text style="margin-right: 15rpx;">{{item.level}}</text>
+                      <image class="visit-img" mode="scaleToFill" src="/static/image/visit.png"/>
+                      <text class="title-css">{{item.salesmanId === 0?  '领取' : '已领取'}}</text>
+                  </view>
+                </block>
+              </view>
+     
+              <view class="card-content" data-type="detail" data-item="{{item}}" onTap="{{picker === 'all' ? '' : 'handleJumpDetail' }}">
+                <view class="content-list leadsStatus">
+                  <view>
+                    <view class="list-title">
+                      <image mode="scaleToFill" src="/static/image/time.svg"/>
+                      <view class="title-css">
+                        客户类型：
+                      </view>
+                      <view class="list-message">
+                          <text>{{merchantTypesObj[item.merchantType]}}</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="leadsStatusTxt">
+                    <block a:if="{{item.potentialStatus === 'hadCo'}}">
+                      已合作
+                    </block>
+                    <block a:else>
+                      {{item.expireDay}}天后回收    
+                    </block>
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/store.svg"/>
+                    <view class="title-css">
+                      门店数量：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.estimateFacadeNumber}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/address.svg"/>
+                    <view class="title-css">
+                      系统/门店名称：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.facadeName}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/visit.svg"/>
+                    <view class="title-css ">
+                      门店地址：
+                    </view>
+                  </view>
+                  <view class="list-message ">
+                    {{item.facadeAddress}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          
+          <block a:else>
+            <view class="no-data">
+              <image style="width: 280rpx; height: 280rpx;" mode="scaleToFill" src="/static/image/no-data.png"/>
+              <view> 暂无客户数据 </view>
+            </view>
+          </block>
+        </view>
+      </tab-content>
+      
+
+      <tab-content key="{{tabIndex}}" tabId="{{tabIndex}}" activeTab="{{activeTab}}" a:else>
+        <view class="tab-content">
+          <block a:if="{{cooperationList.length > 0}}">
+            <view class="merchant-card" a:for="{{cooperationList}}" data-index="{{ index }}">
+              <view class="card-title">
+                <view class="card-title-name">{{item.merchantName}}</view>
+                <view class="visit-wrap" data-type="visit" data-item="{{item}}" onTap="handleJumpVisit">
+                    <text style="margin-right: 15rpx;">{{item.level}}</text>
+                    <image class="visit-img" mode="scaleToFill" src="/static/image/visit.png"/>
+                    <text class="title-css">去拜访</text>
+                </view>
+              </view>
+
+              <view class="card-content" data-type="detail" data-item="{{item}}" onTap="{{picker === 'all' ? '' : 'handleJumpDetail' }}">
+                <view class="content-list leadsStatus">
+                  <view>
+                    <view class="list-title">
+                      <image mode="scaleToFill" src="/static/image/time.svg"/>
+                      <view class="title-css">
+                        客户类型：
+                      </view>
+                      <view class="list-message">
+                          <text>{{merchantTypesObj[item.merchantType]}}</text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/store.svg"/>
+                    <view class="title-css">
+                      门店数量：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.estimateFacadeNumber}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/address.svg"/>
+                    <view class="title-css">
+                      商务负责人：
+                    </view>
+                  </view>
+                  <view class="list-message">
+                    {{item.followBy}}
+                  </view>
+                </view>
+                <view class="content-list">
+                  <view class="list-title">
+                    <image mode="scaleToFill" src="/static/image/visit.svg"/>
+                    <view class="title-css ">
+                      距离上次下单天数：
+                    </view>
+                  </view>
+                  <view class="list-message ">
+                    {{item.latestOrderAt}}
+                  </view>
+                </view>
+              </view>
+            </view>
+              
+
+          </block>
+          <block a:else>
+            <view class="no-data">
+              <image style="width: 280rpx; height: 280rpx;" mode="scaleToFill" src="/static/image/no-data.png"/>
+              <view> 暂无客户数据</view>
+            </view>
+          </block>
+        </view>
+      </tab-content>
+    </block>
+  </tabs>
+
+  <block a:if="{{activeTab === 0}}">
+    <view class="float-left-icon" catchTap="onAdd">
+      <am-icon type="add" size="20" color="#fff" />   
+    </view>
+  </block>
+</view>
+
+<block a:if="{{canFilter}}">
+<view class="my-popup {{showFilter ? 'my-popup-show' : ''}} animation" disable-scroll="{{true}}" style="z-index: 777;">
+  <view class="my-popup-mask"style="z-index: 777;" onTap="onCancelFilter"
+  catchTouchStart="onTouchStart" catchTouchEnd="onTouchEnd" ></view>
+  <view class="my-popup-content my-popup-right" style="z-index: 777;" disable-scroll="{{true}}">
+   <my-filter showRegion="{{activeTab === 2 ? false : true}}"></my-filter>
+  </view>
+</view>
+</block>

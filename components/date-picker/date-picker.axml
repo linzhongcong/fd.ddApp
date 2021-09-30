@@ -1,0 +1,33 @@
+<view>
+  <view class="picker-button-group">
+    <text catchTap="cancelChoose" class="btn-left">取消</text>
+    <text catchTap="confirmChoose" class="btn-right">确认</text>
+  </view>
+  <!-- 年月日 -->
+  <picker-view value="{{initialValue}}" onChange="changeTime" a:if="{{type == 'days'}}">
+    <picker-view-column>
+      <view a:for="{{years}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{months}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{days}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{hours}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{minute}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+  <!-- 年月 -->
+  <picker-view value="{{initialValue}}" onChange="changeTime" a:else>
+    <picker-view-column>
+      <view a:for="{{years}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{months}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

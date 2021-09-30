@@ -1,0 +1,36 @@
+<view class="picker-modal" style="{{placeholder ? '': 'height: 0'}}">
+
+  <view class="picker-placeholder {{placeholder ? 'active' : ''}}" catchTap="handleClick" >
+    <text>{{ value || placeholder}}</text>
+  </view>    
+    
+  <view class="picker-back {{show || autoShow ? 'active' : ''}}" catchTap="handlePickerCancle"></view>
+  <view class="picker-content {{show || autoShow? 'active' : ''}}">
+    <view class="picker-toolbar">
+      <view class="picker-list-title">{{title}}</view>
+      <view class="picker-btns">
+        <text onTap="handlePickerCancle">取消</text>
+        <text onTap="handlePickerConfirm"  data-value="{{index}}">确定</text>
+      </view>
+    </view>
+    
+    <picker-view value="{{index}}" onChange="handlePickerChange" data-value="{{index}}">
+      
+      <picker-view-column>
+        <view>{{defaluText}}</view>
+        <view a:for="{{provinces}}" a:key="*this">{{item.name}}</view>
+      </picker-view-column>
+
+      <picker-view-column>
+        <view>{{defaluText}}</view>
+        <view a:for="{{citys}}" a:key="*this">{{item.name}}</view>
+      </picker-view-column>
+
+      <picker-view-column>
+        <view>{{defaluText}}</view>
+        <view a:for="{{areas}}" a:key="*this">{{item.name}}</view>
+      </picker-view-column>
+
+    </picker-view>
+  </view>
+</view>

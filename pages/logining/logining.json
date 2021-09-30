@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "登录",
+  "usingComponents": {
+    "loading": "mini-ali-ui/es/loading/index"
+  }
+}

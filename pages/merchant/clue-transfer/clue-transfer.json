@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "转化为潜在客户",
+   "usingComponents": {
+    "query-company": "/components/query-company/query-company"
+ }
+}

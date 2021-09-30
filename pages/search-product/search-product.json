@@ -1,0 +1,10 @@
+{
+ "defaultTitle": "添加产品",
+ "usingComponents": {
+  "search-bar": "mini-ali-ui/es/search-bar/index",
+  "filter": "mini-ali-ui/es/filter/index",
+  "filter-item": "mini-ali-ui/es/filter/filter-item/index",
+  "am-checkbox": "mini-ali-ui/es/am-checkbox/index",
+  "am-icon": "mini-ali-ui/es/am-icon/index" 
+ }
+}

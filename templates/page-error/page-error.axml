@@ -1,0 +1,10 @@
+<view>
+  <page-result
+  type="{{type}}"
+  title="{{title}}"
+  brief="{{brief}}"
+  footer="{{footer}}"
+  onTapLeft="onTapLeft"
+  onTapRight="onTapRight"
+  />
+</view>

@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "下店签退",
+  "usingComponents": {
+    "am-icon": "mini-ali-ui/es/am-icon/index",
+    "list": "mini-ali-ui/es/list/index",
+    "list-item": "mini-ali-ui/es/list/list-item/index"
+  }
+}

@@ -1,0 +1,97 @@
+<!-- 合作客户 -->
+<template name="isProfile">
+<view class="isProfile">
+  <view class="header-wrap">
+    <view class="info-title">
+      <view class="merchant-name">{{shopInfo['merchant_name']}}</view>
+      <view class="level">{{shopInfo['level']}}</view>
+      <view class="merchant-type">类型: {{merchantTypes[shopInfo.merchant_type]}}</view>
+    </view>
+    <view class="info-wrap" >
+      <block a:for="{{shopInfoArray}}">
+        <view class="info-item" key="{{index}}">
+          <image class="info-item-icon" mode="scaleToFill"  src="/static/image/{{ item.icon }}.png"/>
+          <view class="info-text-wrap">
+            <text class="{{item.key === 'latestOrderAt' ? 'info-item-label-xl' : 'info-item-label'}}">{{item.label}}</text>
+            <text class="info-item-text">{{item.value}}</text>  
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="detail-tab-wrap">
+    <view class="detail-tab-header">
+      <view class="detail-tab-item tab-item-record__actived" data-tab="record" style="width: 100%;">
+        拜访记录
+      </view>
+    </view>
+    <view class="detail-tab-content">
+      <view class="tab-content-header"> 
+        <view class="info-item">
+          <image class="info-item-icon" mode="scaleToFill" src="/static/image/count.png"/>
+          <view>
+            <text class="info-item-label">累计拜访次数：</text>
+            <text class="info-item-text">{{ count }}</text>
+          </view>
+        </view>
+        <view class="info-item">
+          <image class="info-item-icon" mode="scaleToFill" src="/static/image/user.png"/>
+          <view>
+            <text class="info-item-label">最近一次签到人：</text>
+            <text class="info-item-text">{{ visitInfo[0].created_by }}</text>
+          </view>
+        </view>
+      </view>
+      <view class="tab-content-wrap">
+        <scroll-view class="scroll-box" a:if="{{visitInfo.length > 0}}" scroll-y="{{ true }}" onScrollToLower="getMoreData">
+          <view class="scroll-view-item" data-id="{{ item }}" onTap="handleJumpPageClick"  a:for="{{visitInfo}}">
+            <view class="scroll-view-item__header">
+              <view class="date"> {{ item.signin_at.date }} </view>
+              <view class="time"> 时间：{{ item.signin_at.time }} </view>
+            </view>
+            <view class="scroll-info-item-wrap">
+              <view class="info-item scroll-info-item">
+                <image class="info-item-icon" mode="scaleToFill" src="/static/image/user.png"/>
+                <view class="info-text-wrap">
+                  <text class="info-item-label">签到人</text>
+                  <text class="info-item-text">{{ item.created_by }}</text>
+                </view>
+              </view>
+              <view class="info-item scroll-info-item">
+                <image class="info-item-icon" mode="scaleToFill" src="/static/image/shop.png"/>
+                <view class="info-text-wrap">
+                  <text class="info-item-label">系统/门店</text>
+                  <text class="info-item-text">{{ item.name }}</text>
+                </view>
+              </view>
+              <view class="info-item scroll-info-item">
+                <image class="info-item-icon" mode="scaleToFill" src="/static/image/address.png" />
+                <view class="info-text-wrap">
+                  <text class="info-item-label">签到地点 </text>
+                  <text class="info-item-text">{{ item.address }}</text>      
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view a:else class="no-data">
+          <image style="width: 280rpx; height: 280rpx;" mode="scaleToFill" src="/static/image/no-data.png"/>
+          <view>暂无数据</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tabbar">
+    <view class="tabbar-item" onTap="handlerVisit">
+      <view>
+        <image class="tabbar-item-img" mode="scaleToFill" src="/static/image/baifang.png" style="height: 50rpx;"/>
+      </view>
+      <view class="tabbar-item-text">
+        <text>拜访 {{source}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

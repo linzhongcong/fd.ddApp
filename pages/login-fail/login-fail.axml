@@ -1,0 +1,12 @@
+<view>
+  <view class="learn">
+    <image mode="scaleToFill" style="width:160rpx; height: 160rpx;" src="/static/image/login_fail.svg"/>
+    <view class="title">
+      <view>您暂无使用该应用的权限</view>
+      <view>请联系管理员开通</view>
+      <view style="color: #999;fontSize: 26rpx;fontWeight: 500">管理员：线下渠道部-张敏华 </view>
+    </view>
+
+    <button size="default" type="primary">知道了</button>
+  </view>
+</view>

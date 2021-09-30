@@ -1,0 +1,6 @@
+{
+    "defaultTitle": "异常页",
+    "usingComponents": {
+        "page-result": "mini-ali-ui/es/page-result/index"
+    }
+}

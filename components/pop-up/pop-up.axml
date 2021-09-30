@@ -1,0 +1,7 @@
+<view catchtouchmove="popPreventTouchmove">
+  <view class="q-pp-mask  {{ visible ? 'q-pp-mask-show' : '' }}" onTap="handleClickMask" catchtouchmove="popPreventTouchmove">
+    <view class=" q-pp {{ visible ? 'q-pp-show' : '' }}" data-type="unclose" catchtouchmove="popPreventTouchmove">
+      <slot name="content" type="unclose"></slot>
+    </view>
+  </view>
+</view>

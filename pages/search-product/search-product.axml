@@ -1,0 +1,54 @@
+<view class="page">
+<view class="search">
+  <search-bar placeholder="搜索" className="search-input"
+    focus="{{true}}" maxLength="{{20}}" showVoice="{{showVoice}}" showCancelButton="{{true}}"
+    value="{{value}}" 
+    onInput="handleInput" onClear="handleClear" onCancel="handleCancel" onSubmit="handleSubmit" />
+</view>
+<view class="container">
+  <view class="filter">
+    <view class="filter-btns" onTap="showFilter">
+      <text class="filter-text">产品类目</text>
+      <am-icon type="down" size="15" />
+    </view>
+    <filter show="{{showFilter}}" equalRows="{{2}}" onChange="handleFilterChange"  onMaskTap='handleFilterClose' onReset="onReset">
+      <block a:for="{{productTypes}}">
+      <filter-item id="{{item.id}}" selected="{{item.selected}}" key="filter-item-{{key}}" value="{{item.name}}" />
+      </block>
+    </filter>
+  </view>
+
+  <scroll-view class="result" style="height: 90%;" scroll-y="{{ true }}" onScrollToLower="getMoreData">
+    <block a:for="{{products}}">
+      <view class="card" a:key="*this">
+        <view class="card-column">
+          <block a:if="{{item.fileItem.id}}">
+          <image class="card-image" mode="aspectFit" alt="暂无图片" src="{{item.fileItem.url}}"/>
+          </block>
+          <block a:else>
+          <image class="card-image" mode="aspectFit" alt="暂无图片" src="../../asset/icom/empty_img.svg"/>
+          </block>
+        </view>
+        <view class="card-column card-column-grow">
+          <view class="card-describe">
+            <view class="card-content-brand">{{item.name}}</view>
+            <view class="card-content-price">零售价：{{item.price}}</view>
+          </view>
+        </view>
+        <view class="card-column card-column-flexstart ">
+          <view class="card-checkbox" style="{{showFilter ? 'opacity: 0;' : ''}}">
+            <am-checkbox id="{{item.id}}" value="{{item.name}}" ctrlChecked="{{item.selected}}" 
+              data-item="{{item}}" onChange="handleCheckboxChange" />
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  
+  <view class="btns">
+    <view class="btn {{productsCache.length > 0 ? 'active' : ''}}" onTap="onCancelSelected">取消已选</view>
+    <view class="btn {{productsCache.length > 0 ? 'active' : ''}}" onTap="onComfirmSelected">确认({{productsCache.length}})</view>
+  </view>
+
+</view>
+</view>

@@ -1,0 +1,30 @@
+@import '/utils/common/css/style-v2.acss';
+
+.checkin {
+  position: fixed;
+  bottom: 180rpx;
+  right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #00A1E9;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0rpx 4rpx 20rpx #00A1E9;
+  text-align: center;
+}
+
+.checkin image {
+  width: 100%;
+  height: 100%;
+}
+
+.checkin .checkin-bg {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  margin: 20rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: -1;
+  top: 0;
+}

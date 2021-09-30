@@ -1,0 +1,105 @@
+<view class="all-business">
+  <view class="picker-commodity-wrap">
+    <view class="picker-label">已选： </view>
+    <view class="picker-text">
+      {{ selectedShopList.join('、') }}
+    </view>
+    <view 
+      a:if="{{ selectedShopList.length }}"
+      data-type="open"  
+      class="view-picker-btn" 
+      onTap="handleCloseModal">
+      查看已选 >
+    </view>
+  </view>
+
+  <form
+    class="merchant-form"  
+    onSubmit="onSubmit" 
+    onReset="onReset">
+    <view class="business-hold">
+      <!-- 左边 -->
+      <view class="business-left">
+        <scroll-view scroll-y="{{true}}" scroll-into-view="{{toView}}" style="height: 80vh" a:if="{{ businessList.length }}">
+          <view 
+              class="scroll-list"
+              a:for="{{businessList}}" 
+              a:for-index="idx" 
+              a:for-item="item" 
+              id="{{item.title}}">
+            <view class="list-title"> {{item.title}} </view>
+            <view class="list-content" >
+              <checkbox-group name="libs{{idx}}">
+                <label 
+                  class="checkbox" 
+                  key="label-{{idx}}" 
+                  a:for="{{item.list}}" 
+                  a:for-index="subIdx"
+                  a:for-item="subItem">
+                  <view 
+                    data-idx="{{ idx }}"
+                    data-index="{{ subIdx }}"
+                    data-name="{{ subItem.merchantName }}"
+                    data-checked="{{ subItem.checked }}"
+                    onTap="handleCheckboxClick">
+                  <checkbox 
+                    checked="{{ subItem.checked }}"
+                    value="{{ subItem.merchantName }}"/>
+                  <text class="checkbox-text">{{ subItem.merchantName }}</text>
+                  </view>
+                </label>
+              </checkbox-group>
+            </view>
+          </view>
+        
+        </scroll-view>
+        <view class="nodata business-left" a:else >
+          <image 
+            style="width: 280rpx; height: 280rpx;" 
+            mode="scaleToFill" 
+            src="/static/image/no-data.png"/>
+          暂无数据
+        </view>
+      </view>
+      <!-- 右边 -->
+      <view class="business-right" onTouchStart="touchStart" onTouchMove="touchMove" onTouchEnd="touchEnd">
+        <view id="nav_item" a:for="{{letterList}}" a:for-index="index" class="letter-style {{letterList[index] == chooseText? 'letter-choose' : ''}}">
+          {{letterList[index]}}
+          
+          <!-- 当前字母选择提示框 -->
+          <view class="{{letterList[index] === chooseText? 'choose-letter' : ''}}" hidden="{{hidden}}" a:if="{{letterList[index] === chooseText}}">
+            {{chooseText}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <button 
+      hover-class
+      disabled="{{ !selectedShopList.length }}"
+      type="primary" 
+      formType="submit" 
+      class="confirm-btn">
+      确定
+    </button>
+  </form>
+    
+  <!-- 已选客户弹窗 -->
+  <view 
+    a:if="{{ isOpenShopModal }}" 
+    class="select-modal-wrap">
+    <view class="select-modal">
+      <view class="modal-title"> 已选客户 </view>
+      <view class="modal-detail-wrap">
+        <block a:for="{{ selectedShopList }}" key="*this">
+          <view class="detail-list"> {{ index + 1 }}、{{ item }}</view>
+        </block>
+      </view>
+      <view 
+        class="confirm-btn" 
+        data-type="close"
+        onTap="handleCloseModal">
+        确定
+      </view>
+    </view>
+  </view>
+</view>

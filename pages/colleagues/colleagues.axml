@@ -1,0 +1,25 @@
+<view class="colleague">
+  <view class="colleague-wrap">
+    <view class="colleague-item" a:for="{{ colleagues }}" key="index">
+      <view class="left-content">
+        <text class="num-icon">{{index + 1}}</text>
+        <input
+          style="width: 80%"
+          data-index="{{index}}" 
+          onBlur="bindColleagues" 
+          onFocus="settingClearText"
+          onConfirm="settingClearText"
+          class="name" 
+          value="{{item.username}}" 
+          placeholder="请输入姓名" />
+      </view>
+      <image
+        data-index="{{index}}"
+        onTap="deleteColleagues"
+        class="delete-icon"
+        mode="scaleToFill"
+        src="/static/image/del_img.svg"/>
+    </view>
+  </view>
+  <view class="colleague-btn" onTap="saveColleagues">保存</view>
+</view>

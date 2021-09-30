@@ -1,0 +1,40 @@
+<view>
+  <form class="form-body" onSubmit="subForm" >
+    <view class="form-main">
+      <view class="form-box">
+        <view class="form-list">
+          <view class="form-title">客户名称</view>
+          <input placeholder="请输入客户名称" name="merchantName" disabled value="{{ merchant.name }}" />
+        </view>
+
+        <view class="form-list">
+          <view class="form-title">客户类型</view>
+          <input placeholder="请输入客户名称" name="merchantType" disabled value="{{ merchant.type }}" />
+        </view>
+
+        <view class="form-list">
+          <view class="form-title">
+            系统/门店名称
+            <text>*</text>
+          </view>
+          <input placeholder="请输入系统/门店名称" name="name" value="{{ facade.name }}" />
+        </view>
+
+        <view class="form-list border-none">
+          <view class="form-title">
+            门店地址
+            <text>*</text>
+          </view>
+          <view class="form-address">
+            <input placeholder="请输入门店地址" name="address" value="{{ facade.address }}" />
+            <image onTap="jumpMap" mode="scaleToFill" style="width: 40rpx; height: 40rpx;" src="/static/image/shop_place.svg"/>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-footer">
+      <button size="default" type="primary" form-type="submit" class="{{ btnType === true ? 'isdisabled' : '' }}" >提交</button>
+    </view>
+  </form>
+</view>

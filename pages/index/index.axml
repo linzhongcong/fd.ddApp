@@ -1,0 +1,82 @@
+<view >
+  <view class="branch-box">
+    <view class="main">
+      <view class="branch-text">时间： {{signTime}} </view>
+      <view class="branch-text">所在部门：{{ branch.parentDept + '-' + branch.groupName }}</view>
+    </view>
+    
+    <view class="right-btn">
+      <view class="visit-sign" a:if="{{!isSign}}">
+        <button class="sign-btn in-botton" size="default" type="primary" onTap="signIn"><text>签到</text></button>
+      </view>
+      <view class="visit-sign" a:else>
+        <button class="sign-btn out-botton" size="default" type="primary" onTap="signOut"><text>签退</text></button>
+      </view>
+    </view>
+  </view>
+
+  <tabs tabs="{{tabs}}" activeTab="{{tabIndex}}"
+    tabsName="value" tabBarUnderlineWidth="20px" className="tabs" tabBarCls="tabs" 
+    elevator="{{false}}" swipeable="{{false}}" stickyBar="{{false}}" animation="{{false}}"
+    showPlus="{{false}}" capsule="{{false}}" hasSubTitle="{{false}}"
+    onTabClick="handleTabClick">
+    <block a:for="{{tabs}}" a:for-item="tabItem" a:for-index="tabIndex">
+
+      <tab-content key="{{tabIndex}}" tabId="{{tabIndex}}" activeTab="{{tabIndex}}" a:if="{{tabIndex === 0}}" style="font-size: 20rpx;">
+        <view class="tab-content">
+          <block a:if="{{rankingList.length > 0}}">
+            <view class="merchant-card" a:for="{{rankingList}}" data-index="{{ index }}">
+            </view>
+          </block>
+
+          <block a:else>
+            <view class="no-data">
+              <image class="no-data-img" mode="scaleToFill" src="/static/image/no-data.png"/>
+              <text class="no-data-text">数据待更新，敬请期待</text>
+            </view>
+          </block>
+        </view>
+      </tab-content>
+
+      <tab-content key="{{tabIndex}}"tabId="{{tabIndex}}" activeTab="{{tabIndex}}" a:elif="{{tabIndex === 1}}">
+        <view class="tab-content">
+          <block a:if="{{rankingList.length > 0}}">
+            <view class="merchant-card" a:for="{{rankingList}}" data-index="{{ index }}">
+            </view>
+          </block>
+          
+          <block a:else>
+            <view class="no-data">
+              <image class="no-data-img" mode="scaleToFill" src="/static/image/no-data.png"/>
+              <text class="no-data-text">数据待更新，敬请期待</text>
+            </view>
+          </block>
+        </view>
+      </tab-content>      
+    </block>
+  </tabs>
+  
+  <view class="post-head" onTap="openModal" > 注意事项 </view>
+  <modal className="attention-modal" show="{{attentionPrompt}}" onModalClick="onModalClick" mask="{{false}}"  disableScroll="{{false}}">
+    <view slot="header">{{attentionClickMatter.noticeType}}</view>
+    <scroll-view class="post-main" style="height: 400rpx;" scroll-y="{{true}}" lower-threshold="{{100}}" onScrollToLower="{{onScrollToLower}}">
+      <view a:for="{{attentionClickMatter.noticeContent}}" class="scroll-view-item">
+        {{item}}
+        <text a:if="{{index === attentionClickMatter.noticeContent.length -1}}">：{{attentionClickMatter.beginAt}} 至 {{attentionClickMatter.endAt}}</text>
+      </view>
+    </scroll-view>
+    <view slot="footer">确定</view>
+  </modal>
+
+  <modal className="attention-modal" show="{{attentionPromptLogin}}" onModalClick="onModalClick" mask="{{false}}" disableScroll="{{false}}" >
+    <view slot="header">{{attentionLoginMatter.noticeType}}</view>
+    <scroll-view scroll-y="{{true}}" onScroll="onScroll" lower-threshold="{{100}}" onScrollToLower="{{onScrollToLower}}" class="post-main" style="height: 400rpx;" >
+      <view a:for="{{attentionLoginMatter.noticeContent}}" class="scroll-view-item">
+        {{item}}
+        <text a:if="{{index === attentionLoginMatter.noticeContent.length -1}}">：{{attentionLoginMatter.beginAt}} 至 {{attentionClickMatter.endAt}}</text>
+      </view>
+    </scroll-view>
+    <view slot="footer">确定</view>
+  </modal>
+
+</view>

@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "全部地区",
+   "usingComponents": {
+    "cascader": "/components/cascader/cascader"
+  }
+}

@@ -1,0 +1,42 @@
+<view class="page">
+<form onSubmit="onSubmit">
+  <view class="page-section">
+    <view class="form-row space-between">
+      <view class="form-row-label"> 公司名称：</view>
+      <view class="form-row-content">{{merchantName}}</view>
+    </view>    
+  </view>
+
+  <view class="page-section">
+    <view class="form-row space-between">
+      <view class="form-row-label"> 姓名 <text class="required">*</text></view>
+      <view class="form-row-content">
+        <input class="input text-right" placeholder="点击填写" name="contactName" value="{{contactName}}"/>
+      </view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row space-between">
+      <view class="form-row-label"> 职务 </view>
+      <view class="form-row-content"> 
+        <input class="input text-right" placeholder="点击填写" name="contactJob" value="{{contactJob}}"/>
+      </view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row space-between">
+      <view class="form-row-label"> 联系方式 <text class="required">*</text></view>
+      <view class="form-row-content"> 
+        <input class="input text-right" placeholder="点击填写" name="contactPhone" value="{{contactPhone}}" />
+      </view>
+    </view>
+    <view class="form-line"></view>
+
+  </view>
+
+  <view class="page-section-btns">
+    <button class="btn-submit" type="primary" formType="submit">提交</button>
+  </view>
+</form>
+
+</view>

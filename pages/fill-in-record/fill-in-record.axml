@@ -1,0 +1,140 @@
+<view>
+  <view class="record">
+    <view class="sell-wrap">
+      <view class="record-title">
+        <view class="record-icon"></view>
+        <view>销售记录</view>
+      </view>
+      <view a:if="{{ selStartSell }}">
+        <view class="record-section">
+          <view class="record-content" a:for="{{ recordInfo.sellInputVal }}">
+            <view class="record-list">
+              <input class="record-name" onBlur="getSellVal" data-index="{{index}}" data-type="name" value="{{ recordInfo.sellInputVal[index].productName }}" placeholder="请输入产品名称" />
+              <image a:if="{{recordInfo.sellInputVal.length>1}}" onTap="delSellInput" data-index="{{index}}" class="record-img" mode="scaleToFill" src="/static/image/reduce.svg"/>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">数量</view>
+              <view><input placeholder="请输入数量" onBlur="getSellVal" data-index="{{index}}" data-type="count" value="{{ recordInfo.sellInputVal[index].number }}" /></view>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">零售价</view>
+              <view>{{ recordInfo.sellInputVal[index].retailPrice }}</view>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">销售额</view>
+              <view>{{ recordInfo.sellInputVal[index].value }}</view>
+            </view>
+          </view>
+          <view class="record-add">
+            <image onTap="addSellInput" class="record-img" mode="scaleToFill" src="/static/image/add.svg"/>
+            <view>添加销售记录</view>
+          </view>
+        </view>
+        <view class="record-tip">
+          数据较多时，可稍后登录管理端选择审核状态录入
+        </view>
+        <view class="record-footer">
+          <view class="record-list">
+              <view>销售总额</view>
+              <view>{{ sellAmount }}</view>
+          </view>
+          <view class="record-list-column">
+            <view>备注</view>
+            <view>
+             <textarea style="fontSize: 25rpx;marginTop:15rpx;" v-model="{{ recordInfo.sellRemark }}" onBlur="getSellRemmark" placeholder="请输入"  />
+            </view>
+          </view>
+          <view class="take">
+            <view>销售凭证上传<text class="require-text">*</text></view>
+            <view class="record-pic">
+              <image onTap="importImgSell" mode="scaleToFill" class="record-default" src="/static/image/upload_img.svg"/>
+              <view class="record-pic-wrap" a:for="{{ recordInfo.sellArr }}">
+                <text onTap="delImgSell" class="record-pic-del" data-index='{{index}}'></text>
+                <image onTap="previewImgSell" data-index='{{index}}' mode="scaleToFill" class="record-pic-content" src="{{ item }}"/>
+              </view>
+            </view>                  
+          </view>
+        </view>   
+      </view>
+      <view class="record-sel" onTap="selTapSell">
+        <image mode="scaleToFill" style="width: 30rpx; height: 30rpx;" src="{{ selImg }}"/>
+      </view>
+    </view>
+
+    <view class="store-wrap">
+      <view class="record-title">
+        <view class="record-icon"></view>
+        <view>库存记录</view>
+      </view>
+      <view a:if="{{ selStartStore }}">
+        <view class="record-section">
+          <view class="record-content" a:for="{{ recordInfo.storeInputVal }}">
+            <view class="record-list">
+              <input class="record-name" onBlur="getStoreVal" data-index="{{index}}" data-type="name" value="{{ recordInfo.storeInputVal[index].productName }}" placeholder="请输入产品名称" />
+              <image a:if="{{recordInfo.storeInputVal.length>1}}" onTap="delStoreInput" data-index="{{index}}" class="record-img" mode="scaleToFill" src="/static/image/reduce.svg"/>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">现有库存</view>
+              <view><input onBlur="getStoreVal" data-index="{{index}}" data-type="count" value="{{ recordInfo.storeInputVal[index].number }}" placeholder="请输入数量"/></view>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">零售价</view>
+              <view>{{ recordInfo.storeInputVal[index].retailPrice }}</view>
+            </view>
+            <view class="record-list-none">
+              <view class="text-title">库存货值</view>
+              <view>{{ recordInfo.storeInputVal[index].value }}</view>
+            </view>
+          </view>
+          <view class="record-add">
+            <image onTap="addStoreInput" class="record-img" mode="scaleToFill" src="/static/image/add.svg"/>
+            <view>添加库存记录</view>
+          </view>
+        </view>
+        <view class="record-tip">
+          数据较多时，可稍后登录管理端选择审核状态录入
+        </view>
+        <view class="record-footer">
+          <view class="record-list">
+              <view>货值总值</view>
+              <view>{{ storeAmount }}</view>
+          </view>
+          <view class="record-list-column">
+            <view>备注</view>
+            <view>
+              <textarea style="fontSize: 25rpx;marginTop:15rpx;" v-model="{{ recordInfo.storeRemark }}"  onBlur="getStoreRemmark" placeholder="请输入"  />
+            </view>
+          </view>
+          <view class="take">
+            <view>库存凭证上传<text class="require-text">*</text></view>
+            <view class="record-pic">
+              <image onTap="importImgStore" mode="scaleToFill" class="record-default" src="/static/image/upload_img.svg"/>
+              <view class="record-pic-wrap" a:for="{{ recordInfo.storeArr }}">
+                <text onTap="delImgStore" class="record-pic-del" data-index='{{index}}'></text>
+                <image onTap="previewImgStore" data-index='{{index}}' mode="scaleToFill" class="record-pic-content" src="{{ item }}"/>
+              </view>
+            </view>                  
+          </view>
+        </view>
+      </view>
+      <view class="record-sel" onTap="selTapStore">
+        <image mode="scaleToFill" style="width: 30rpx; height: 32rpx;" src="{{ selImg }}"/>
+      </view>
+    </view>
+    <view class="record-button">
+      <button onTap="submit" size="default" type="primary">保存</button>
+    </view>
+  </view>
+  <view animation="{{animationInfo}}" class="search-wrap" a:if="{{ isSearch }}">
+    <view class="search-title">产品名称</view>
+    <scroll-view style="height: 500rpx" scroll-y="{{true}}">
+      <view class="search-list" a:for="{{ productList }}">
+        <view class="search-conntent" data-index="{{ index }}" onTap="getChoose">
+          <text>{{ item.name }}</text>
+          <icon a:if="{{ index === chooseIndex }}" type="success_no_circle" size="16"/>  
+        </view>
+      </view>
+    </scroll-view>
+   </view>
+  <view class="search-shade" onTap="closeSearch" a:if="{{ isSearch }}"></view>
+</view>

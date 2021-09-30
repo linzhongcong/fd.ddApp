@@ -1,0 +1,97 @@
+<view class="cascader-wrap">
+  <view class="cascader-provice">
+    <text class="cascader-header-title">省</text>
+    <scroll-view 
+      scroll-y="{{true}}"
+      style="height: 1000rpx">
+        <block a:for="{{ allProvinces }}" key="{{ item.num }}">
+          <view 
+            class="cascader-provice-wrap" 
+            data-selected="{{ !item.isFoucs }}"
+            data-province="{{ item.province }}"
+            data-index="{{ item.num }}"
+            onTap="handleProviceSelectClick">
+            <view class="cascader-checkbox">
+              <image
+                a:if="{{ item.isChecked }}"
+                class="cascader-checkbox-icon"
+                src="/static/image/selected-arrow.png"/>
+              <image
+                a:elif="{{ item.isFoucs }}" 
+                class="cascader-checkbox-icon"
+                src="/static/image/selected-arrow-hidden.png"/>
+              <text a:else class="cascader-checkbox__inner"></text>
+            </view>
+            <text class="cascader-provice-list">{{ item.province }}</text>
+          </view>
+        </block>
+    </scroll-view>
+  </view>
+
+  <!-- 市 -->
+  <view class="cascader-city">
+    <text  class="cascader-header-title">市</text>
+    <scroll-view 
+      scroll-y="{{true}}"
+      style="height: 1000rpx">
+      <block a:for="{{ showCityList }}" key="{{ index }}">
+        <view 
+          class="cascader-provice-wrap"  
+          data-province="{{ item.province }}"
+          data-city="{{ item.city }}"
+          data-index="{{ item.num }}"
+          data-foucs="{{ item.isFoucs }}"
+          data-checked="{{ item.isChecked }}"
+          data-selected="{{ !item.isFoucs }}"
+          data-pindex="{{ item.parentNum }}"
+          onTap="handleCitySelectClick">
+          <view class="cascader-checkbox">
+            <image
+              a:if="{{ item.isChecked }}"
+              class="cascader-checkbox-icon"
+              src="/static/image/selected-arrow.png"/>
+            <image
+              a:elif="{{ item.isFoucs }}" 
+              class="cascader-checkbox-icon"
+              src="/static/image/selected-arrow-hidden.png"/>
+            <text a:else class="cascader-checkbox__inner"></text>
+          </view>
+          <text class="cascader-provice-list"> {{ item.city }} </text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!-- 区或县 -->
+  <view class="cascader-area">
+    <text class="cascader-header-title">区</text>
+    <scroll-view 
+      scroll-y="{{true}}"
+      style="height: 1000rpx">
+      <block a:for="{{ showAreaList }}" key="{{ item.num }}">
+        <view class="cascader-provice-wrap"
+          data-province="{{ item.province }}"
+          data-city="{{ item.city }}"
+          data-area="{{ item.area }}"
+          data-index="{{ item.num }}"
+          data-checked="{{ item.isChecked }}"
+          data-selected="{{ !item.isChecked }}"
+          data-pindex="{{ item.parentNum }}"
+          onTap="handleAreaSelectClick">
+          <view class="cascader-checkbox">
+            <image
+              a:if="{{ item.isChecked }}"
+              class="cascader-checkbox-icon"
+              src="/static/image/selected-arrow.png"/>
+            <image
+              a:elif="{{ item.isFoucs }}" 
+              class="cascader-checkbox-icon"
+              src="/static/image/selected-arrow-hidden.png"/>
+            <text a:else class="cascader-checkbox__inner"></text>
+          </view>
+          <text class="cascader-provice-list">{{ item.area }}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

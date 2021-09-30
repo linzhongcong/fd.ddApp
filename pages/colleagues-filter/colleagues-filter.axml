@@ -1,0 +1,48 @@
+<view class="all-business">
+  <form  onSubmit="onSubmit" onReset="onReset">
+    <view class="business-hold">
+      <!-- 左边 -->
+      <view class="business-left" a:if="{{memberList.length}}">
+        <scroll-view scroll-y="{{true}}" scroll-into-view="{{toView}}" style="height: 100vh">
+          <view class="scroll-list" a:for="{{memberList}}"  a:for-index="idx" a:for-item="item" id="{{item.title}}">
+            <view class="list-title">
+              {{item.title}}
+            </view>
+            <view class="list-content">
+              <checkbox-group onChange="onChange" name="libs{{idx}}">
+                <label class="checkbox" a:for="{{item.list}}"  a:for-index="idx" key="label-{{idx}}" a:for-item="subItem">
+                  <checkbox value="{{subItem.name}}"  checked="{{chooseColleagues.indexOf(subItem.name) >= 0 ? 'true' : ''}}"/>
+                  <text class="checkbox-text">{{subItem.name}}</text>
+                </label>
+              </checkbox-group>
+            </view>
+          </view>
+        
+        </scroll-view>
+      </view>
+        <view class="nodata business-left" a:else >
+          <image 
+            style="width: 280rpx; height: 280rpx;" 
+            mode="scaleToFill" 
+            src="/static/image/no-data.png"/>
+          暂无数据
+        </view>
+      <!-- 右边 -->
+      <view class="business-right" onTouchStart="touchStart" onTouchMove="touchMove" onTouchEnd="touchEnd">
+        <view id="nav_item" a:for="{{letterList}}" a:for-index="index" class="letter-style {{letterList[index] == chooseText? 'letter-choose' : ''}}">
+          {{letterList[index]}}
+          
+          <!-- 当前字母选择提示框 -->
+          <view class="{{letterList[index] === chooseText? 'choose-letter' : ''}}" hidden="{{hidden}}" a:if="{{letterList[index] === chooseText}}">
+            {{chooseText}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <button
+      style="position: fixed;bottom:-20rpx;left:0;width: 100%;height:88rpx;" 
+      class="{{ btnConfirmActive ? '' : 'btn-disbale' }}"
+      type="primary" 
+      formType="submit">确定</button>
+  </form>
+</view>

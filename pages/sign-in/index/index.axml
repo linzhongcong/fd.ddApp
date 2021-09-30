@@ -1,0 +1,109 @@
+<import src="../templates/street_worship.axml" />
+<import src="../templates/return_visit.axml" />
+<import src="../templates/maintain.axml" />
+<import src="../templates/stick_cabinet.axml" />
+<import src="../templates/activity.axml" />
+<import src="../templates/no_shop.axml" />
+<import src="../templates/patrol.axml" />
+
+<view class="sign-in">
+<form onSubmit="subForm">
+  <list>
+    <list-item lowerSubtitle="{{signTime}}" last="{{true}}">
+      <view slot="extra" onTap="mapUrl">地址微调</view>
+    </list-item>
+    <list-item lowerSubtitle="{{address}}" onClick="onListItemClick" last="{{true}}">
+      <view slot="extra"><am-icon type="right" size="{{15}}" color="#333"/></view>
+    </list-item>
+    <list-item lowerSubtitle="签到类型" last="{{true}}">
+      <view slot="extra">{{visitTypes[signType]}}</view>
+    </list-item>
+  </list>
+
+  <block a:if="{{ signType === 'street_worship' }}">
+    <template is="street_worship"  data='{{signInfo,shopTypes,shopTypeIndex,clientTypes,clientIndex}}' > </template>
+    <block a:if="{{businessFlag}}">
+      <query-company show="{{businessFlag}}" animation="{{true}}"
+        onReceive="onReceiveBusiness" onClose="onCloseBusiness">
+      </query-company>
+    </block>
+  </block>
+
+  <block a:elif="{{ signType === 'return_visit' }}">
+    <template is="return_visit" data='{{signInfo,shopTypes,merchant,shopTypeIndex,textColor}}'> </template>
+    <block a:if="{{searchModalShow}}">
+      <query-shop show="{{searchModalShow}}" animation="{{true}}" 
+        signType="{{signType}}" onlyShop="{{true}}" onClose="onCancel" onReceive="onReceive" >
+      </query-shop>
+    </block>
+  </block>
+
+  <block a:elif="{{ signType === 'maintain' }}">
+    <template is="maintain" data='{{signInfo,shopTypes,merchant,shopTypeIndex}}'> </template>
+    <block a:if="{{searchModalShow}}">
+      <query-shop show="{{searchModalShow}}" animation="{{true}}" 
+        signType="{{signType}}" onlyShop="{{true}}" onClose="onCancel" onReceive="onReceive" >
+      </query-shop>
+    </block>
+  </block>
+
+  <block a:elif="{{ signType === 'stick_cabinet' }}">
+    <template is="stick_cabinet" data='{{signInfo,shopTypes,merchant,shopTypeIndex,textColor}}'> </template>
+    <block a:if="{{searchModalShow}}">
+      <query-shop show="{{searchModalShow}}" animation="{{true}}"
+        signType="{{signType}}" onClose="onCancel" onReceive="onReceive" >
+      </query-shop>
+    </block>
+  </block>
+
+  <block a:elif="{{signType === 'activity'}}">
+    <template is="activity" data='{{signInfo,shopTypes,merchant,shopTypeIndex,textColor}}'> </template>
+    <block a:if="{{searchModalShow}}">
+      <query-shop show="{{searchModalShow}}" animation="{{true}}"
+        signType="{{signType}}" onClose="onCancel" onReceive="onReceive" >
+      </query-shop>
+    </block>
+  </block>
+
+  <block a:elif="{{ signType === 'no_shop' }}">
+    <template is="no_shop" data='{{signInfo,shopTypes,merchant,shopTypeIndex,textColor}}'> </template>
+  </block>
+
+  <block a:elif="{{ signType === 'patrol'}}">
+    <template is="patrol" data="{{signInfo,shopTypes,merchant,shopTypeIndex,textColor}}"></template>
+    <block a:if="{{searchModalShow}}">
+      <query-shop signType="{{signType}}" onlyStore="{{onlyStore}}" onlyShop="{{onlyShop}}"
+        show="{{searchModalShow}}" animation="{{true}}" onClose="onCancel" onReceive="onReceive" >
+      </query-shop>
+    </block>
+  </block>
+
+  <block a:else>
+    <template is="street_worship" data='{{signInfo,shopTypes}}'> </template>
+    <block a:if="{{businessFlag}}">
+      <query-company show="{{businessFlag}}" animation="{{true}}"
+        onReceive="onReceiveBusiness" onClose="onCloseBusiness">
+      </query-company>
+    </block>
+  </block>
+
+  <button form-type="submit" size="default" type="primary" 
+    class="btn-absolute-bottom {{ loading === true ? 'isdisabled' : '' }}"
+    style="height: 90rpx;">
+    确认签到
+  </button>
+</form>
+<!-- 占位 -->
+<view style="height: 90rpx;"></view>
+<!-- 占位 -->
+<!-- <view class="success" a:if="{{ isSign }}">
+  <image mode="scaleToFill" src="/static/image/login_success.svg"/>
+  <view>签到成功，{{ seconds }}秒后自动跳转...</view>
+</view> -->
+</view>
+
+
+
+
+
+

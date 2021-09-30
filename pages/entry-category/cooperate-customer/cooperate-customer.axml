@@ -1,0 +1,35 @@
+<view>
+  <!-- 头部组件 -->
+  <view id="header"><my-header input-placeholder="请输入公司名称" onOk="handleOnOk" hide-area></my-header></view>
+  <!-- 头部组件 -->
+  <!-- 内容区域 -->
+  <scroll-view style="height: {{scrollViewHeight}};" scroll-y lower-threshold="{{100}}" scroll-top="{{backTop}}" onScrollToLower="onScrollToLower">
+    <view class="card card-flex border-bottom border-light-gray" a:for="{{dataList}}" onTap="goToPage" data-type="detail" data-id="{{item.id}}" key="potential{{index}}">
+      <view class="card-left">
+        <view class="title bolder">{{item.merchantName}}</view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">客户类型：</view>
+          <view class="row-text">{{item.merchantType}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">门店数量：</view>
+          <view class="row-text">{{item.facadeNumber}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 145rpx;">开拓负责人：</view>
+          <view class="row-text">{{item.salesmanName}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 145rpx;">商务负责人：</view>
+          <view class="row-text">{{item.followBy}}</view>
+        </view>
+      </view>
+      <view class="card-right">
+        <view class="small-btn {{item.isCollect ? '' : 'disabled'}}" catchTap="goToPage" data-type="visit" data-id="{{item.id}}" data-is-collect="{{item.isCollect}}">去拜访</view>
+        <view class="tips {{item.cooperateType === 'normal' ? 'blue' : item.cooperateType === 'stop' ? 'red' : ''}}">{{item.cooperateTypeText}}</view>
+      </view>
+    </view>
+    <view class="load-tips">{{loadTipsText}}</view>
+  </scroll-view>
+  <!-- 内容区域 -->
+</view>

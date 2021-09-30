@@ -1,0 +1,60 @@
+<template name="stick_cabinet">
+<view>
+  <view class="sign-list">
+    <view class="sign-title">客户名称<text class="required">*</text></view>
+    <view class="shop-name">
+      <view  onTap="searchModalShow">
+        <label a:if="{{ signInfo.merchantName === '' }}" class="label-null">请输入客户名称获取数据</label>
+        <label a:else>{{ signInfo.merchantName }}</label>
+        <input class="merchantName" placeholder="请输入客户名称获取数据" name="merchantName" value="{{ signInfo.merchantName }}" data-type="merchant" readonly="readonly" onFocus="searchModalShow" />
+      </view>
+    </view>
+  </view>
+      
+  <view class="sign-list">
+    <view class="sign-title">客户类型<text class="required">*</text></view>
+    <view class="shop-type">
+      <picker onChange="pickerChangeType" value="{{shopTypeIndex}}" range="{{shopTypes}}" range-key="label" disabled>
+        <view class="picker">
+        <label a:if="{{ signInfo.merchantType === '' }}" class="label-null">请选择客户类型</label>
+        <label a:else>{{  shopTypes[shopTypeIndex].label }}</label>
+        <input class="merchantType" name="merchantType" value="{{signInfo.merchantType}}" disabled />
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <block a:if="{{signInfo.facadeId}}">
+    <view class="sign-list">
+      <view class="sign-title">系统/门店名称<text class="required">*</text></view>
+      <input value="{{signInfo.facadeName}}" name="facadeName" disabled />
+    </view>
+    
+    <view class="sign-list">
+      <view class="sign-title">门店地址<text class="required">*</text></view>
+      <input value="{{ signInfo.facadeAddress }}" name="facadeAddress"  disabled/>      
+    </view>
+  </block>
+
+  <view class="sign-list">
+    <view class="sign-title">贴柜销售目标 <text class="required">*</text></view>
+    <textarea class="textarea" placeholder="请输入贴柜销售目标" name="salesTarget" />
+  </view>
+
+  <view class="prompt" >
+    <text>请确认以上信息，完成选择签到后不可更改哦</text>
+  </view>
+
+  <view class="sign-list-img">
+    <view class="sign-title" style="margin-left: 20rpx;">签到拍照 <text class="required">*</text></view>
+    <view class="sign-img">
+      <image onTap="onSelfieFileItems" mode="scaleToFill" class="sign-default" src="/static/image/upload_img.svg"/>
+      <view a:for="{{ signInfo.selfieFileItemsCache }}">
+        <text onTap="delImg" data-index='{{index}}' data-name="self"></text>
+        <image onTap="previewImg" onLoad="onLoadImg" data-index='{{index}}' data-name="self"  mode="scaleToFill" class="sign-img-content" src="{{ item }}"/>
+      </view>
+    </view>
+  </view>
+
+</view>
+</template>

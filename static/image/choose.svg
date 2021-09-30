@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: rgba(0,0,0,0.2);
+        stroke-miterlimit: 10;
+        stroke-dasharray: 3 2;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0.4);
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="人员选择" transform="translate(-296 -80)">
+    <g id="Dashed" class="cls-1" transform="translate(296 80)">
+      <rect class="cls-4" width="32" height="32" rx="2"/>
+      <rect class="cls-2" x="0.5" y="0.5" width="31" height="31" rx="1.5"/>
+    </g>
+    <g id="Group-54" transform="translate(305 89)">
+      <rect id="Rectangle-36" class="cls-2" width="14" height="14"/>
+      <g id="plus" transform="translate(1.941 2.035)">
+        <path id="Shape" class="cls-3" d="M11.454,5.44H6.516V.576A.561.561,0,0,0,5.957.012h0A.561.561,0,0,0,5.4.576V5.44H.57A.561.561,0,0,0,.012,6h0a.561.561,0,0,0,.558.564H5.4v4.88a.561.561,0,0,0,.558.564h0a.561.561,0,0,0,.558-.564V6.568h4.938A.561.561,0,0,0,12.012,6h0A.561.561,0,0,0,11.454,5.44Z" transform="translate(-0.953 -1.047)"/>
+      </g>
+    </g>
+  </g>
+</svg>

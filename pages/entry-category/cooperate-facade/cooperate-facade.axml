@@ -1,0 +1,31 @@
+<view>
+  <!-- 头部组件 -->
+  <view id="header"><my-header input-placeholder="请输入门店名称" onOk="handleOnOk" hide-screen></my-header></view>
+  <!-- 头部组件 -->
+  <!-- 内容区域 -->
+  <scroll-view style="height: {{scrollViewHeight}};" scroll-y lower-threshold="{{100}}" scroll-top="{{backTop}}" onScrollToLower="onScrollToLower"> 
+    <view class="card border-bottom border-light-gray" a:for="{{dataList}}" onTap="goToPage" data-facade-id="{{item.id}}" data-contractor-id="{{item.contractorId}}" key="facade{{index}}">
+      <view class="card-left">
+        <view class="title bolder">{{item.name}}</view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">门店编号：</view>
+          <view class="row-text">{{item.number}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">进驻品牌：</view>
+          <view class="row-text">{{item.inBrands}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 180rpx;">系统/门店名称：</view>
+          <view class="row-text">{{item.systemName}}</view>
+        </view>
+        <view class="row">
+          <view class="row-label" style="min-width: 122rpx;">门店地址：</view>
+          <view class="row-text">{{item.address}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="load-tips">{{loadTipsText}}</view>
+  </scroll-view>
+  <!-- 内容区域 -->
+</view>

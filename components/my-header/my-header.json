@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "popup": "mini-ali-ui/es/popup/index",
+    "search-bar": "/components/search-bar/search-bar"
+  }
+}

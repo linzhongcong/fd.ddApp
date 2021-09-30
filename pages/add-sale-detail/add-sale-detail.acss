@@ -1,0 +1,242 @@
+.page {
+  padding: 0 0;
+}
+
+.required {
+  margin-left: 3rpx;
+  color: red;
+}
+
+.input {
+  font-size: 26rpx;
+  height: auto;
+  line-height: normal;
+  text-align: right;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 75rpx;
+  padding: 0 25rpx;
+  line-height: 75rpx;
+  background: white;
+}
+
+.flex-item {
+  font-size: 30rpx;
+}
+
+.form {
+  margin-top: 20rpx;
+}
+
+.page-section {
+  padding: 0 24rpx;
+}
+
+.form-page-section-title {
+  height: 90rpx;
+  padding: 0;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.question {
+  padding: 0 20rpx;
+  background-color: white;
+}
+
+.question-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  margin-left: 6rpx;
+}
+
+
+.btns-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  line-height: 100%;
+  color: #00a1e9;
+  border: none;
+}
+
+.btns-reduce-icon {
+  position: relative;
+  top: 1rpx;
+  right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.btns-submit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 26rpx;
+}
+
+.btns-cancel {
+  width: 45%;
+  background-color: white;
+}
+
+.btns-comform {
+  width: 45%;
+  background-color: #00a1e9;
+}
+
+.btns-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+
+.tips-weak {
+  font-size: 24rxp;
+  color: #ccc;
+  margin: 20rpx 0 0 6rpx
+}
+
+.card-template {
+  background: #f1f1f1;
+}
+
+.card {
+  margin-top: 30rpx;
+  background-color: white;
+}
+
+.card:first-child {
+  margin-top: 0;
+}
+
+.card-item-first {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 0;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 75rpx;
+  padding: 0 25rpx;
+  line-height: 75rpx;
+}
+
+.card-content--flexstart {
+  flex-grow: 1;
+  padding: 0 25rpx;
+}
+
+.card-label {
+  font-size: 26rpx;
+}
+
+.card-content {
+  font-size: 26rpx;
+}
+
+.card-image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.card-reduce-icon {
+  align-self: flex-start;
+}
+
+.card-content-brand {
+  height: 32rpx;
+  text-align: start;
+  font-size: 26prx;
+  line-height: 32rpx;
+}
+
+.card-content-price {
+  margin-top: 20rpx;
+  height: 32rpx;
+  text-align: start;
+  font-size: 26prx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+.bgwhite {
+  background-color: #ffff;
+}
+
+
+.form-row-sku {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+
+.form-row-label-sku {
+  word-wrap: break-word;
+  height: 75rpx;
+  font-size: 26rpx;
+  line-height: 75rpx;
+}
+
+.form-row-input-sku {
+  height: 75rpx;
+}
+
+.form-row-content-sku {
+  height: 75rpx;
+  font-size: 26rpx;
+  line-height: 75rpx;
+}
+
+.input-sku {
+  width: 142rpx;
+  height: 55rpx;
+  font-size: 26rpx;
+  text-align: right;
+  margin-top: 5rpx;
+}
+
+.input {
+  width: 142rpx;
+}
+
+.up-image {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 0;
+}
+
+.a-button {
+  margin: 0;
+}

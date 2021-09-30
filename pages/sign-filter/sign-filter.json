@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "筛选",
+  "usingComponents": {
+    "date-picker": "/components/date-picker/date-picker"
+  }
+}

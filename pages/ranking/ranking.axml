@@ -1,0 +1,114 @@
+  <!-- 排行榜 -->
+  <view class="ranking-wrap">
+    <view class="tab-wrap">
+      <view class="tabs">
+        <view
+          class="diligent {{ tabDiligentActived ? 'actived' : '' }}" 
+          data-type="diligence"
+          onTap="changeRankingTab" >
+          勤奋榜
+        </view>
+        <view 
+          class="performance {{ tabPerformanceActived ? 'pactived' : '' }}" 
+          data-type="business" 
+          onTap="changeRankingTab" >
+          业绩榜
+        </view>
+      </view>
+      <view class="tabs-performance" a:if="{{tabPerformanceActived}}">
+        <view class="tabs-total">
+          <text 
+            data-type="total" 
+            class="total-text {{ totalActived ? 'totalActived' : ''}}"
+            onTap="changeRankingTab"  >
+            总榜
+          </text>
+        </view>
+        <view class="tabs-newers">
+          <text
+            data-type="new_people" 
+            class="newers-text {{newerActived ? 'newerActived' : ''}}"
+            onTap="changeRankingTab" >
+            新人榜
+          </text>
+        </view>
+      </view>
+    </view>
+    <view class="ranking-content-wrap">
+      <view class="content-header">
+        <view
+          class="username"
+          data-type="user"
+          data-label="{{loginName}}" 
+        >
+          {{rankingData.loginName}}
+        </view>
+        <view class="user-msg">
+          <view style="margin-right: 14rpx">第{{rankingData.rank ? rankingData.rank : 0}}名</view>
+          |
+          <view  style="margin-left: 14rpx">
+            {{tabPerformanceActived ? '签约合作商' : '签到次数'}}： 
+            {{tabPerformanceActived
+              ?  
+                rankingData.signingNumber ? rankingData.signingNumber : 0
+              : 
+                rankingData.checkinNumber ?  rankingData.checkinNumber : 0}}
+          </view>
+        </view>
+      </view>
+      <view class="detail-header">
+        <view class="ranking-text detail-list">
+          <text class="ranking-type">排名</text>  
+          <text class="ranking-type">员工</text>  
+          <text class="ranking-type" a:if="{{ !tabPerformanceActived }}" style="width: 85px">签到时长(h)</text>  
+          <text 
+            class="ranking-type" 
+            style="width: {{tabPerformanceActived ? 'auto': '60px'}}">
+            {{tabPerformanceActived ? '签约合作商' : '签到次数'}}
+          </text>  
+        </view>
+        <scroll-view
+          scroll-y="{{true}}"
+          style="height:65vh"
+          onScrollToLower="loadMore"
+        >
+        <view 
+          class="detail-list" 
+          a:for="{{ rankingData.list }}" 
+          a:for-index="idx">
+          <view class="ranking-num">
+           <image 
+            a:if="{{idx + 1 === 1}}"
+            style="width: 40rpx; height:40rpx;" 
+            src="/static/image/ranking-num-first.png" />
+           <image 
+            a:elif="{{idx + 1 === 2}}"
+            style="width: 40rpx; height:40rpx;" 
+            src="/static/image/ranking-num-second.png" />
+           <image 
+            a:elif="{{idx + 1 === 3}}"
+            style="width: 40rpx; height:40rpx;" 
+            src="/static/image/ranking-num-third.png" />
+            <view a:else style="min-width: 40rpx; height:40rpx;">{{ idx + 1 }}</view>
+          </view>
+          <view  
+            data-type="member"
+            data-label="{{item.username}}" 
+            data-username="{{item.loginName}}"
+            class="ranking-member">
+            {{item.loginName}}
+          </view>
+          <view class="sign-time" a:if="{{ !tabPerformanceActived }}">
+            {{item.length }}
+          </view>
+          <view class="sign-count"> 
+            {{ tabPerformanceActived ? item.signingNumber : item.checkinNumber}}
+          </view>
+        </view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <view a:if="{{ !noMore && rankingData.list.length >= 20 }}" class="ranking-view-nomore">-- 下拉加载更多 --</view>
+    <view a:else  class="ranking-view-nomore">-- 暂无更多数据 --</view>
+  </view>

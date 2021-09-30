@@ -1,0 +1,10 @@
+{
+  "defaultTitle": "筛选",
+  "usingComponents": {
+    "tabs": "mini-ali-ui/es/tabs/index",
+    "search-bar": "/components/search-bar/search-bar",
+    "tab-content": "mini-ali-ui/es/tabs/tab-content/index",
+    "am-icon": "mini-ali-ui/es/am-icon/index",
+    "my-filter": "/components/my-filter/my-filter"
+ }
+}

@@ -1,0 +1,108 @@
+<view>
+  <form class="filer">
+    <view class="filer-main">
+      <!-- 客户名称 -->
+      <view class="filer-box">
+        <view class="ismain">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text>
+              客户名称
+            </view>
+            <view class="title-right">
+              {{ selectshopList.join('、') }}
+            </view>
+          </view>
+          <view class="shop">
+            <view 
+              class="shop-btn {{ item.isShow === true ? 'active' : '' }}"  
+              a:for="{{ shopList }}" 
+              data-show="{{ item.isShow }}"
+              data-index="{{ index }}"  
+              onTap="handleSlectShopClick" >
+              {{ item.name }}
+            </view>
+            <view class="nodata" a:if="{{!shopList.length}}" >暂无数据</view>
+          </view>
+          <view class="box-btn" data-type="shop" data-page="merchantFilter" onTap="handleJumpPageClick">
+            查看全部客户 >
+          </view>
+        </view>
+      </view>
+
+      <!-- 类型 -->
+      <view class="filer-box mar-top">
+        <view class="ismain" style="height: 140rpx;">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text>类型
+            </view>
+            <view class="title-right"> {{ selectTypeList.join('、') }} </view>
+          </view>
+          <radio-group
+            class="date mar-top"
+            onChange="handlePickerTypeChange">
+            <label a:for="{{ merchantType }}" key="{{ item.name }}">
+              <view class="date-btn {{ item.checked === true ? 'active' : '' }}" >
+                <radio value="{{ item.name }}" checked="{{item.checked}}"/>{{ item.name }}
+              </view>
+            </label>
+          </radio-group>
+        </view>
+      </view>
+
+      <!-- 地区 -->
+      <view class="filer-box mar-top area-filter">
+        <view class="ismain">
+          <view class="box-title">
+            <view class="title-left">
+              <text class="box-icon"></text> 地区
+            </view>
+            <view class="title-right">{{ selectDistrictList.join('、') }}</view>
+          </view>
+          <view class="shop">
+            <view 
+              class="shop-btn {{ item.checked ? 'active' : '' }}"  
+              data-checked="{{ item.checked }}"
+              data-index="{{ index }}"  
+              a:for="{{ districtList }}" 
+              onTap="handleSelectDistrictClick">
+              {{ item.address }}
+            </view>
+
+            <view class="nodata" a:if="{{!districtList.length}}" >
+              <!-- <image 
+                style="width: 180rpx; height: 200rpx;" 
+                mode="scaleToFill" 
+                src="/static/image/no-data.png"/> -->
+              暂无数据
+            </view>
+          </view>
+          <view class="box-btn" data-type="district" onTap="handleJumpPageClick">
+            查看全部地区 >
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="filer-footer">
+      <view class="ismain">
+        <button 
+          plain="{{ true }}" 
+          onTap="handleResetBtnClick" 
+          style="color:#00a1e9">
+          重置
+        </button>
+
+        <button 
+          hover-class 
+          disabled="{{ !selectTypeList.length && !selectshopList.length && !selectDistrictList.length }}"
+          type="primary" 
+          onTap="handleConfirmBtnClick">
+          确定
+        </button>
+      </view>
+    </view>
+  </form>
+  
+</view>

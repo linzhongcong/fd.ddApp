@@ -1,0 +1,40 @@
+<template name="patrol">
+  <view>
+    <view class="sign-list">
+      <view class="sign-title">被访客户<text class="required">*</text></view>
+      <view class="shop-name">
+      <view onTap="searchModalShow">
+          <label a:if="{{ signInfo.merchantName === '' }}" class="label-null">请输入客户名称获取数据</label>
+          <label a:else>{{ signInfo.merchantName }}</label>
+          <input class="merchantName" placeholder="请输入客户名称获取数据" name="merchantName" value="{{ signInfo.merchantName }}" data-type="merchant" readonly="readonly" />
+        </view>
+      </view>
+    </view>
+
+    <view class="sign-list">
+      <view class="sign-title">客户类型<text class="required">*</text></view>
+      <view class="shop-type">
+        <picker onChange="pickerChangeType" value="{{shopTypeIndex}}" range="{{shopTypes}}" range-key="label" disabled>
+          <view class="picker">
+          <label a:if="{{ signInfo.merchantType === '' }}" class="label-null">请选择客户类型</label>
+          <label a:else>{{  signInfo.merchantTypeText }}</label>
+          <!-- <label a:else>{{  shopTypes[shopTypeIndex].label }}</label> -->
+          <input class="merchantType" name="merchantType" value="{{signInfo.merchantType}}" disabled />
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="sign-list">
+      <view class="sign-title">客户门店<text class="required">*</text></view>
+      <view class="shop-name"> 
+      <view onTap="showStore">
+          <label a:if="{{ signInfo.facadeName === '' }}" class="label-null">请输入客户门店名称获取数据</label>
+          <label a:else>{{ signInfo.facadeName }}</label>
+          <input class="merchantName" placeholder="请输入客户门店名称获取数据" name="merchantName" value="{{ signInfo.facadeName }}" data-type="merchant" readonly="readonly" />
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</template>

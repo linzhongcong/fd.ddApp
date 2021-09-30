@@ -1,0 +1,99 @@
+<view class="sign-out"> 
+<form onSubmit="onSubmit" onReset="onReset">
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="form-row form-row-content-flex">
+      <text class="form-content">{{signoutTime}}</text>
+      <text class="form-content" onTap="mapUrl">地址微调</text>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row">
+      <image class="form-label__img" mode="scaleToFill" src="/static/image/address.svg"/>
+      <text class="form-row-content">{{signInfo.address}}</text>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <text class="form-content">签到类型</text>
+      <text class="form-content">{{visitType}}</text>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">开始时间{{'   ' + signTime}}</view>
+      <view class="form-content">下店时长{{"   " + visitDuration}}</view>
+    </view>
+  </view>
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">被访客户</view>
+      <view class="form-content">{{signInfo.merchantName}}</view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">客户类型</view>
+      <view class="form-content">
+      <picker value="{{shopIndex}}" range="{{shopTypes}}" range-key="label" disabled>
+        <view class="picker">
+        <label a:if="{{ signInfo.merchantType === '' }}" class="label-null">请选择客户类型</label>
+        <label a:else class="form-content">{{  shopTypes[shopIndex].label }}</label>
+        <input class="merchantType form-content" name="merchantType" value="{{signInfo.merchantType}}" disabled />
+        </view>
+      </picker>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">客户门店</view>
+      <view class="form-content">{{signInfo.facadeName}}</view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex" onTap="addContacts">
+      <view class="form-content">新建联系人</view>
+      <view class="form-content"> <am-icon type="right" size="15" /></view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">1.拍门店/公司大门<text class="required">*</text></view>
+    </view>
+    <view style="padding-bottom: 20rpx;">
+      <view class="signout-img">
+        <image onTap="upSignOutImage" mode="scaleToFill" class="signout-img-default" src="/static/image/upload_img.svg"/>
+        <view a:for="{{ signOutImages }}" class="signout-img-box">
+          <text onTap="delImg" data-index='{{index}}' data-name="self" class="signout-img-text"></text>
+          <image onTap="preview" onLoad="onLoadImg" data-index='{{index}}' data-name="self"  mode="scaleToFill" class="signout-img-content" src="{{ item.objectUrl }}"/>
+        </view>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex" onTap="onStoreDetail">
+      <view class="form-content">2.门店陈列与竞对<text class="required">*</text></view>
+      <view class="form-content" style="color: #ccc;">点击{{modifyStore ? '修改' : '填写'}} <am-icon type="right" size="12" /></view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex" onTap="onAddSaleDetail">
+      <view class="form-content">3.门店产品与POS<text class="required">*</text></view>
+      <view class="form-content" style="color: #ccc;">点击{{modifySale ? '修改' : '填写'}} <am-icon type="right" size="12" /></view>
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">4.站于货架边视野内人数<text class="required">*</text></view>
+    </view>
+    <view class="form-row form-row-content-flex">
+      <input class="form-input" type="number" placeholder="点击填写" name="shelfPeople" value="{{shelfPeople}}"  onInput="onInput" />
+    </view>
+    <view class="form-line"></view>
+    <view class="form-row form-row-content-flex">
+      <view class="form-content">5.关于销售增长的建议</view>
+    </view>
+    <view class="form-row form-row-content-flex" style="height: 100%;">
+      <textarea style="width: 100%; z-index: 0;" class="form-input" placeholder="点击填写" maxlength="{{1000}}"
+      show-count auto-height controlled
+      name="salesGrowthSuggestion" value="{{salesGrowthSuggestion}}" onInput="onTextArea" />
+    </view>
+    
+  </view>
+
+  <view style="height: 120rpx;"></view>
+  <view class="btn-absolute-bottom" style="height: 120rpx;">
+    <button type="primary" formType="submit" style="width:100%; height: 100%;" disabled="{{loading}}">下店签退</button>
+  </view>
+</form>
+</view>

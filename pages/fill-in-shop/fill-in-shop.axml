@@ -1,0 +1,46 @@
+<view>
+  <view class="place">
+    <view class="main">
+      <view class="place-list-bottom">
+        <view class="place-title">产品陈列拍照</view>
+        <view class="place-pic">
+          <image onTap="importImgDisplay" mode="scaleToFill" class="place-default" src="/static/image/upload_img.svg"/>
+          <view class="place-pic-wrap" a:for="{{ productImgArr }}">
+            <text onTap="delImgDisplay" class="place-pic-del" data-index='{{index}}'></text>
+            <image onTap="previewImgDisplay" data-index='{{index}}' mode="scaleToFill" class="place-pic-content" src="{{ item }}"/>
+          </view>
+        </view> 
+        <view class="place-title">产品陈列描述</view>
+        <textarea style="fontSize: 25rpx;" onBlur="displayInput" maxlength="-1" placeholder="请输入陈列描述" value="{{ place.remark }}"   />
+      </view>
+      <view class="place-list">
+        <view class="place-title">陈列级别</view>
+        <view class="place-type">
+          <picker onChange="displayPickerChange" value="{{ displayTypeIndex }}" range="{{ displayTypeArr }}" range-key="name">
+            <view class="picker" style="line-height:58rpx;display: flex">
+              <text class="picker-name" style="width:600rpx; height:64rpx">{{ displayTypeArr[displayTypeIndex].name }}</text>
+              <image mode="scaleToFill" style="width:16rpx; height:64rpx" src="/static/image/right.svg"/>
+            </view>
+          </picker>
+        </view>   
+      </view>
+      <view class="place-list-bottom">
+        <view class="place-title">陈列级别描述</view>
+        <textarea style="fontSize: 25rpx;" onBlur="levelInput" maxlength="-1" placeholder="请输入陈列级别描述" value="{{ place.situation }}"  />
+      </view>
+      <view class="place-list-bottom">
+        <view class="place-title">物料图拍照</view>
+        <view class="place-pic">
+          <image onTap="importImgMaterials" mode="scaleToFill" class="place-default" src="/static/image/upload_img.svg"/>
+          <view class="place-pic-wrap" a:for="{{ materialImgArr }}">
+            <text onTap="delImgMaterials" class="place-pic-del" data-index='{{index}}'></text>
+            <image onTap="previewImgMaterials" data-index='{{index}}' mode="scaleToFill" class="place-pic-content" src="{{ item }}"/>
+          </view>
+        </view> 
+        <view class="place-title">物料图描述</view>
+        <textarea style="fontSize: 25rpx;" onBlur="materialsInput" maxlength="-1" placeholder="请输入物料图描述" value="{{ place.materialRemark }}"  />
+      </view>
+    </view>
+  </view>
+  <button onTap="submit" size="default" type="primary">保存</button>
+</view>

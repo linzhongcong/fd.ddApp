@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="loading">
+    <text class="font-subtitle">正在获取您的账号信息</text>
+      <text class="font-subtitle">请稍后</text>
+      <loading color="blue" />
+  </view>
+</view>

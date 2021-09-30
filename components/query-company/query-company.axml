@@ -1,0 +1,50 @@
+<view class="query-company {{animation ? 'animation' : ''}} {{show ? 'animation-over' : ''}} ">
+<view class="search">
+  <search-bar className="search-bar" placeholder="请输入公司名称" 
+    focus="{{true}}" disabled="{{false}}" maxLength="{{30}}" 
+    value="{{value}}" onInput="handleInput" onClear="handleClear" onSubmit="handleSubmit"/>
+  <view class="search-button" onTap="handleSubmit">搜索</view>
+</view>
+
+<scroll-view class="scroll" style="height: calc(100vh - 13vh);"
+  scroll-y="{{true}}" lower-threshold="{{50}}" enable-back-to-top="{{true}}" trap-scroll="{{true}}"
+  onScrollToLower="onReachBottom">
+  
+<block a:if="{{list.length > 0}}">
+  <block a:for="{{list}}">
+    <view class="card {{item.contractorId ? 'card-gray' : ''}}" :key="*this" 
+    data-item="{{item}}" onTap="onClick">
+      <view class="card-item">
+        <view class="company-name">
+        <block a:for="{{item.names}}" a:for-item="name" a:for-index="nindex">
+          <text a:if="{{nindex === 1}}" class="matched">{{name}}</text>
+          <text a:else class="">{{name}}</text>
+        </block>
+        </view>
+        <tag a:if="{{item.contractorId}}" className="tag" type="success">已使用</tag>
+      </view>
+
+      <view class="card-item">
+        <text>法人：</text><text>{{item.legalPersonName}}</text>
+      </view>
+      <view class="card-item">
+        <text>公司类型：</text><text>{{companyTypes[item.companyType].label}}</text>
+      </view>
+      <view class="card-item">
+        <text>成立时间：</text><text>{{item.establishTime}}</text>
+      </view>
+      <view class="card-item">
+        <text>经营状态：</text><text>{{item.regStatus}}</text>
+      </view>
+    </view>
+  </block>
+</block>
+
+<block a:else>
+  <view class="no-data">暂无数据</view>
+</block>
+</scroll-view>
+
+<button type="primary" class="btn-back" onTap="goBack" >返回</button>
+</view>
+

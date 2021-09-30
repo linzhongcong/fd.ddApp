@@ -1,0 +1,37 @@
+<template name="no_shop">
+<view class="page">
+  <view class="page-section" style="padding: 0rpx 24rpx;"> 
+    <view class="form-row">
+      <view class="form-row-label">拜访类型：</view>
+      <view class="form-row-content">{{signInfo.checkinWay}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到时间：</view>
+      <view class="form-row-content">{{signInfo.signinAt}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="page-section-title">签退图片：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.selfieFileItems}}">
+        <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+    <view class="page-section-title">备注：</view>
+    <view class="page-section-demo">
+      <view class="form-row-content">{{signInfo.isRemark}}</view>
+    </view>
+
+  </view>
+
+</view>
+</template>

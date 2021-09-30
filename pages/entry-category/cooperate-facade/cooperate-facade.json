@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-header": "/components/my-header/my-header"
+  },
+  "defaultTitle": "合作门店"
+}

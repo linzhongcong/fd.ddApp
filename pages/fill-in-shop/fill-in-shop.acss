@@ -1,0 +1,85 @@
+@import "../../utils/common/css/style.acss";
+
+page{
+  background: #f8f8f8;
+  font-size: 27rpx;
+}
+
+.place{
+  background: #fff;
+}
+
+.main{
+  width: 90%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+}
+
+.place-list{
+  border-bottom: 1px solid #ddd;
+}
+
+.place-list-bottom{
+  line-height: 60rpx;
+}
+
+.place-title{
+  font-weight: 600;
+  line-height: 80rpx;
+}
+
+input{
+  font-size: 26rpx;
+  padding: 0;
+}
+
+.place-pic{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -15rpx;
+}
+.place-default{
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 16rpx;
+  margin-right: 20rpx;
+}
+.place-pic-wrap{
+  border: 1px solid rgb(236, 234, 234);
+  border-radius: 5rpx;
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  margin-top: 16rpx;
+  position: relative;
+}
+
+.place-pic-del{
+  position: absolute;
+  top: -16rpx;
+  left: -16rpx;
+  background: url('/static/image/del_img.svg') no-repeat;
+  background-size: 32rpx 32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.place-pic-content{
+  border-radius: 5rpx;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.place-type{
+  display: flex;
+  padding-bottom: 20rpx;
+}
+
+.place-type image{
+  position: absolute;
+  right: 5%
+}
+
+button{
+  background: #00A1E9;
+  margin-bottom: 0;
+}

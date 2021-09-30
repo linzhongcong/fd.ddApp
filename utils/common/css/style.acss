@@ -1,0 +1,170 @@
+page{
+  background: #fff;
+  border-top: 1px solid #ddd; 
+  font-family: '微软雅黑';
+  height: 100%;
+  color: #333333;
+}
+
+.page-body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.page-footer {
+  flex: 0 0 auto;
+}
+
+.sign-list {
+  width: 94%;
+  margin: 0 auto;
+  padding: 15rpx 0 0;
+  font-size: 14px;
+}
+
+.sign-title {
+  color: #999
+}
+
+.form-list {
+  width: 94%;
+  margin: 0 auto;
+  padding: 15rpx 0 0 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-title {
+  color: #666;
+  text-indent: 0.5em;
+}
+
+.col-red,
+.form-title text {
+  color: #F5222D;
+  margin-left: 10rpx;
+}
+
+.page-footer button {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+}
+
+.sign-box,
+.sign-head {
+  background: #fff;
+}
+
+.sign-box {
+  padding: 15rpx 0;
+}
+
+.border-none {
+  border: none;
+}
+
+.sign-img {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sign-img .img-btn,
+.sign-img view {
+  width: 159rpx;
+  height: 159rpx;
+}
+
+.img-btn {
+  margin-right: 30rpx;
+}
+
+.sign-img view {
+  border: 1px solid rgb(236, 234, 234);
+}
+
+.img-lists view,
+.sign-img view {
+  border-radius: 5rpx;
+  margin-right: 30rpx;
+  position: relative;
+}
+
+.sign-img view image {
+  width: 100%;
+  height: 100%;
+}
+
+.img-lists view {
+  width: 159rpx;
+  height: 159rpx;
+  margin-top: 16rpx;
+}
+
+.img-lists view image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  top: 0;
+}
+
+.img-lists view text,
+.sign-img view text {
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+  background: url('/static/image/del_img.svg') no-repeat;
+  background-size: 32rpx 32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.sign-icon{
+  width: 10rpx;
+  height: 40rpx;
+  background: #00A1E9;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+}
+
+.form-list textarea,
+.sign-list textarea,
+.form-list input,
+.sign-list input {
+  font-size: 26rpx;
+}
+
+.form-list input {
+  width: 100%
+}
+
+.tip-btn {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 15rpx;
+}
+
+.success {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  text-align: center;
+  z-index: 9999;
+}
+
+.success image{
+  margin-top: 50%;
+}
+

@@ -1,0 +1,79 @@
+
+<view>
+  <view class="search">
+    <search-bar placeholder="{{inputPlaceholder}}" 
+      showComfirmButton="{{true}}" comfirmButtonText="搜索"
+      onInput="handleInput" onSubmit="handleSubmit" onClear="handleClear" />
+  </view>
+  <!-- 条件过滤区域 -->
+  <view class="filter">
+    <view class="filter-range" a:if="{{!hideDataRange}}" onTap="handleShowDataRange" data-name="range">
+      <view class="filter-range-text">{{dataRange[selectDataRangeIndex].label}}</view>
+      <image class="{{popupDataRange? 'filter-range-img': ''}}" src="/static/image/sanjiao.png" style="height: 25rpx; width:25rpx; vertical-align: middle; transition: transform .3s;"/>
+    </view>
+    <view class="filter-screen" a:if="{{!hideScreen}}" onTap="handleShowScreen">
+      <image src="/static/image/filer.png" style="height: 25rpx; width:25rpx; vertical-align: middle;"></image>
+      <view class="filter-screen-text">筛选</view>
+    </view>
+  </view>
+  <!-- 条件过滤区域 -->
+  <!-- 数据权限范围 -->
+  <view class="{{popupDataRange? 'popup' : 'popup-none'}}" onTap="handleCloseDataRange" style="position: absolute;">
+    <view class="popup-option" a:for="{{dataRange}}" catchTap="handleSelectDataRange" data-index="{{index}}" key="{{'dataRangOpt' + index}}">{{item.label}}</view>
+  </view>
+  <!-- 数据权限范围 -->
+  <!-- 筛选区域 -->
+  <popup show="{{popupScreen}}" position="right" onClose="handleCloseFilter" disableScroll="{{false}}">
+    <view class="box right screen">
+      <scroll-view scroll-y="{{true}}" class="screen-content">
+        <view class="screen-content-box">
+          <view class="title">客户类型</view>
+          <view class="content">
+            <view class="option {{item._isChecked ? 'active' : ''}}" a:for="{{merchantType}}" onTap="handleSelectMerchantType" data-index="{{index}}" key="{{'merchantType' + index}}">{{item.label}}</view>
+          </view>
+        </view>
+        <view class="screen-content-box" a:if="{{!hideArea}}">
+          <view class="title">地区</view>
+          <view class="content">
+            <view class="area-option {{item._isChecked ? 'active' : ''}}" a:for="{{addAreaList}}" onTap="handleSelectArea" data-index="{{index}}" key="{{'area' + index}}">
+              <text>{{item.label}}</text>
+              <view class="clear-option" catchTap="handleRemoveArea" data-index="{{index}}"><icon type="clear" color="red" size="14"></icon></view>
+            </view>
+          </view>
+          <view class="add-option" onTap="handleAddArea">添加地区选项+</view>
+        </view>
+      </scroll-view>
+      <view class="screen-footer">
+        <view class="screen-footer-btn">
+          <button size="mini" onTap="handleResetFilter">重置</button>
+        </view>
+        <view class="screen-footer-btn primary">
+          <button size="mini" type="primary" onTap="handleSubmitFilter">确定</button>
+        </view>
+      </view>
+    </view>
+  </popup>
+  <!-- 筛选区域 -->
+  <!-- 添加地区选择器 -->
+  <popup show="{{popupArea}}" position="bottom" disableScroll="{{true}}" onClose="handleCloseAreaPicker">
+    <view class="box bottom pick">
+      <view class="pick-header">
+        <view onTap="handleCloseAreaPicker">取消</view>
+        <view onTap="handleSubmitAreaPicker">确定</view>
+      </view>
+      <!-- value绑定选中的数据 -->
+      <picker-view value="{{selectAreaValue}}" onChange="handleAreaPickChange">
+        <picker-view-column>
+          <view a:for="{{province}}">{{item.label}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view a:for="{{city}}">{{item.label}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view a:for="{{county}}">{{item.label}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </popup>
+  <!-- 添加地区选择器 -->
+</view>

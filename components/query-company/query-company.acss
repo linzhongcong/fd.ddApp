@@ -1,0 +1,89 @@
+.query-company {
+  position: fixed;
+	top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  font-size: var(--font-common-size);
+  background: white;
+  z-index: 777;
+}
+
+.query-company .search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-;
+  align-items: center;
+  width: 100%;
+}
+
+.query-company .search-bar {
+  width: 80%;
+}
+
+.query-company .search-button {
+  height: 60rpx;
+  padding: 0 15rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  background-color: #1677ff;
+  border: 2rpx solid #1677ff;
+  border-radius: 12rpx;
+}
+
+.query-company .card {
+  padding: 15rpx 25rpx;
+  background: #FFF;
+  border: 2rpx solid #ccc;
+}
+
+.query-company .card-gray {
+  background-color: #f1f1f1;
+}
+
+.query-company .card-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60rpx;
+  margin-top: 1rpx;
+  line-height: 60rpx;
+}
+
+.query-company .company-name {
+  max-width: 500rpx;
+  min-height: 60rpx;
+  white-space: pre-wrap;
+}
+
+.query-company .matched {
+  color: var(--font-alert-color)
+}
+
+.query-company .tag {
+  padding: 10rpx 20rpx;
+  border-radius: 25rpx;
+}
+
+.query-company .btn-back {
+  position: fixed; 
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 888;
+}
+
+/* 动画 */
+.animation {
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: all .2s linear;
+}
+
+.animation-over {
+  visibility: visible;
+  transform: none;
+}

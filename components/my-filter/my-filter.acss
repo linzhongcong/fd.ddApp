@@ -1,0 +1,209 @@
+.component {
+  width: 85vw;
+  height: 100%;
+  background: white;
+}
+
+.page-section {
+  margin-top: 20rpx;
+  margin-bottom: 0;
+}
+
+.flex-wrop {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.item {
+  width: 29%;
+  height: 60rpx;
+  margin: 10rpx;
+  padding: auto;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: #f1f1f1;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+}
+
+.item-active {
+  line-height: 58rpx;
+  border: #00A1E9 solid 1rpx;
+  background: #e0f7ff;
+}
+
+.item-region {
+  position: relative;
+  min-width: 30%;
+  height: 60rpx;
+  margin: 10rpx;
+  padding-right: 15rpx;
+  padding-left: 15rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: #f1f1f1;
+  border-radius: 5rpx;
+  box-sizing: border-box;
+}
+
+
+.item-region-active {
+  line-height: 58rpx;
+  border: #00A1E9 solid 1rpx;
+  background: #e0f7ff;
+}
+
+.item-region-delete {
+  position: absolute;
+  top: -25rpx;
+  right: -15rpx;
+  color: red;
+}
+
+.page-section-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.placeholder {
+  display: inline-block;
+  width: 15rpx;
+  height: 46rpx;
+  margin-right: 8rpx;
+  background: #00A1E9;
+}
+
+.btn-text {
+  text-align: center;
+  font-size: 24rpx;
+  color: #00A1E9;
+}
+
+.form-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+}
+
+.btns {
+  border-radius: 50rpx;
+  width: 35%;
+  font-size: 30rpx;
+}
+
+.my-picker {
+  width: 100%;
+  height: 100%;
+}
+
+
+.region-picker {
+  width: 100%;
+  height: 600rpx;
+  background: #ffffff;
+}
+
+
+.btn-pircker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx;
+  height: 50rpx;
+  font-size: 38rpx;
+  line-height: 50rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+
+
+.btn-pircker-text {
+  color: #00A1E9;
+  font-weight: 500;
+}
+
+.space {
+  height: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #ccc;
+  line-height: 500rpx;
+}
+
+
+
+.address-item {
+  min-height: 98rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 0 32rpx
+}
+
+.item-title {
+  width: 140rpx;
+  color: #4d4c4c;
+  font-size: 28rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+}
+.item-content {
+  width: 520rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  color: #4d4c4c;
+}
+/* 地区级联选择器 */
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+.picker-view__pane {
+  height: 100rpx;
+  width: 100%;
+  padding: 20rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.picker-view__pane text{
+  color: #00cc88;
+  font-size: 30rpx;
+}
+
+.pick-view__group {
+  width: 96%;
+  height: 480rpx;
+}

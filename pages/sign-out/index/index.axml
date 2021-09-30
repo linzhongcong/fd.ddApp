@@ -1,0 +1,177 @@
+<import src="../templates/stick_cabinet.axml" />
+<import src="../templates/activity.axml" />
+
+<view>
+  <form onSubmit="subForm" class="page-body">
+    <view class="page-head">
+      <view class="list-item">
+        <view class="list-item-left">签到时间</view>
+        <view class="list-item-right">{{sign.time}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">签到地点</view>
+        <view class="list-item-right">{{signInfo.address}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">拜访类型</view>
+        <view class="list-item-right">{{sign.visitType}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">客户名称</view>
+        <view class="list-item-right">{{signInfo.merchantName}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">客户类型</view>
+        <view class="list-item-right">{{sign.merchantTypeCN}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">门店名称</view>
+        <view class="list-item-right">{{signInfo.facadeName}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">门店地址</view>
+        <view class="list-item-right">{{signInfo.facadeAddress}}</view>
+      </view>
+      <view class="list-item">
+        <view class="list-item-left">{{signInfo.checkinWay === 'stick_cabinet' ? '贴柜' : '活动'}}销售目标</view>
+        <view class="list-item-right">{{sign.merchantTypeCN}}</view>
+      </view>
+      <view class="sign-list-img" style="padding-left: 0;">
+        <view class="sign-title">签到照片</view>
+        <view class="sign-img">
+          <block a:if="{{sign.signImgArr.length > 0}}">
+          <view a:for="{{sign.signImgArr}}">
+            <image class="sign-img-content" mode="scaleToFill" src="{{item.url}}" 
+              data-type="sale" data-index='{{index}}' onTap="previewImg"/>
+          </view>
+          </block>
+          <block a:else>
+            <image class="sign-default" mode="scaleToFill" src="/asset/icom/empty_img.svg" 
+              data-type="sale" onTap="importImg" />
+          </block>
+        </view>
+      </view>
+    </view>
+    
+    <view class="form-line" style="margin-top: 36rpx;"></view>
+
+    <view class="page-main">
+      <template a:if="{{signInfo.checkinWay === 'stick_cabinet'}}" is="stick_cabinet" 
+        data="{{sign,shrink,signInfo,brandIndex,brandType}}"></template>
+      <template a:else is="activity" 
+        data="{{sign,shrink,signInfo,activityIndex,activityType,brandIndex,brandType}}"></template>
+    </view>
+
+    <view class="page-footer">
+      <view class="font-subtitle">当前访问时长：{{visitTime}}</view>
+      <button form-type="submit" size="default" type="primary" class="btn-warn-color" >{{ signDate }} 确认签退</button>
+    </view>
+  </form>
+
+  <view class="success" a:if="{{ isSign === true }}">
+    <image mode="scaleToFill" style="width: 180rpx;height:180rpx;" src="/static/image/login_success.svg"/>
+    <view>签退成功，{{ seconds }}秒后自动跳转...</view>    
+  </view>
+
+  <!-- 签到签退失败 S -->
+  <view class="fail" a:if="{{fasle}}">
+    <image mode="scaleToFill" style="width:160rpx; height: 160rpx;" src="/static/image/login_fail.svg"/>
+    <view class="title">
+      <view class="tip">签到地址与门店不在合理范围</view>
+      <view class="again">请确认地址重新签到  </view>
+    </view>    
+    <button size="default" type="default" onTap="jumpIndex">返回</button>
+  </view>
+  <!-- 签到签退失败 E -->
+
+  <!-- 客户分类 -->
+  <view class="swiper-wrap" a:if="{{clientIsShow === true }}">
+    <view class="swiper">
+      <view class="swiper-title">线下渠道客户划分标准</view>
+      <swiper style="height: 750rpx;" indicator-dots="{{true}}" indicator-color="rgba(153, 153, 153, 1)">
+        <swiper-item>
+          <view class="swiper-item">
+            <view class="swiper-item-title">CS渠道</view>
+            <view class="swiper-item-content"> 
+              <text>A类（10-15%)</text>
+              <text>A类客户，第一次拜访后，7天内能成交的客户 </text>
+            </view>
+            <view class="swiper-item-content">
+              <text>B类（15-25%)</text>
+              <text>B类客户：意向客户，有明确的合作欲望，但卡在某个点上，需要消除客户的顾虑，目标在半个月内成交 </text>
+            </view>
+            <view class="swiper-item-content">
+              <text>C类</text>
+              <text>C类客户：潜在客户，介绍过产品，客户提出问题，有了解产品的欲望 ，但合作欲望不明显 ，目标在一个月内成交 </text>
+            </view>
+            <view class="swiper-item-content" style="borderBottom: none">
+              <text>D类</text>
+              <text>D类客户：无意向的客户 </text>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="swiper-item">
+            <view class="swiper-item-title">KA渠道</view>
+            <view class="swiper-item-content"> 
+              <text>A类（10-15%)</text>
+              <text>A类客户，首次拜访客户，客户有接触或听说我司产品，表现出浓厚兴趣，希望了解报价，二至三次拜访可确定基本合作条款 </text>
+            </view>
+            <view class="swiper-item-content">
+              <text>B类（15-25%)</text>
+              <text>B类客户，首次拜访无明显兴趣，需要多次与其沟通介绍我司，实地拜访或电话拜访5次以上并表现出合作意向，8次以上拜访可确定合作条款</text>
+            </view>
+            <view class="swiper-item-content">
+              <text>C类</text>
+              <text>C类客户，首次拜访拒绝合作，多次拜访并列举成功案例，实地拜访或电话拜访高于10次 </text>
+            </view>
+            <view class="swiper-item-content" style="borderBottom: none">
+              <text>D类</text>
+              <text>D类客户：无意向的客户 </text>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="swiper-item">
+            <view class="swiper-item-title">OTC渠道</view>
+            <view class="swiper-item-content"> 
+              <text>A类（10-15%)</text>
+              <text>A类客户，首次拜访后可基本达成合作意愿，二至三次拜访可确定合作</text>
+            </view>
+            <view class="swiper-item-content">
+              <text>B类（15-25%)</text>
+              <text>B类客户，首次拜访有合作意向，但双方合作方式或条列存在疑义，许2-5次拜访后，达成合作共识</text>
+            </view>
+            <view class="swiper-item-content">
+              <text>C类</text>
+              <text>C类客户，首次拜访无强烈合作意向，需双方多轮磋商研讨，拜访达成合作次数高于5次</text>
+            </view>
+            <view class="swiper-item-content" style="borderBottom: none">
+              <text>D类</text>
+              <text>D类客户：无意向的客户 </text>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="swiper-button" onTap="clientClassShow">确定</view>
+    </view>
+  </view>
+
+  <!-- 活动类型 Modal -->
+  <view class="activity-type" a:if="{{isActivityToast}}">
+    <view class="activity-wrap">
+      <view class="activity-title">{{ activityTitle }}</view>
+      <view class="activity-tips" a:if="{{ activityTitle === '活动类型' }}">
+        <text>小型：销售目标1万以下</text>
+        <text>中型：销售目标1-3万</text>
+        <text>大型：销售目标3万以上</text>
+      </view>
+      <view class="activity-tips" a:else>
+        <text>例：活动第三天的累计销售等于三天销售业绩总和。</text>
+      </view>
+      <view class="activity-btn" data-close="{{ true }}" onTap="closeActivityToast">我知道了</view>
+    </view>
+  </view>
+
+</view>
+  

@@ -1,0 +1,4 @@
+<view>
+  <!-- <web-view id="web-view-1" src="https://dingtalktest.fandow.com/template/map.html" onMessage="onmessage"></web-view> -->
+  <web-view id="web-view-1" src="https://dingtalk.fandow.com/template/map.html" onMessage="onmessage"></web-view>
+</view>

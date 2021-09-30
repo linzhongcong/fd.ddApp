@@ -1,0 +1,11 @@
+<view class="page">
+  <list>
+    <view slot="header">请选择签到类型</view>
+    <list-item class="list-item" arrow="{{true}}"
+      a:for="{{signTypes}}" :key="{{index}}"
+      index="{{item.value}}" onClick="onItemClick">
+      {{item.label}}
+    </list-item>
+  </list>
+  <button size="default" type="primary" onTap="goBack" class="btb-fixed-bottom" >返回</button>
+</view>

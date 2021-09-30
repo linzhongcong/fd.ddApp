@@ -1,0 +1,84 @@
+.cascader-wrap {
+  display: flex;
+  background: #fff;
+  margin: 30rpx 0;
+  padding: 30rpx;
+  min-height: 1000rpx;
+}
+
+.cascader-wrap
+.cascader-header-title {
+  display: block;
+  color: #00a1e9;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.cascader-wrap
+.cascader-provice-list {
+  color: #333;
+  font-weight: 500;
+  font-size: 24rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cascader-wrap
+.cascader-provice {
+  width: 28%;
+  border-right: 2rpx solid #ddd;
+}
+
+.cascader-wrap
+.cascader-provice-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 32rpx 0;
+}
+
+.cascader-wrap 
+.cascader-city {
+  width: 32%;
+  padding-left: 30rpx;
+  border-right: 2rpx solid #ddd;
+}
+
+.cascader-wrap 
+.cascader-area {
+  width: 40%;
+  padding-left: 30rpx;
+}
+
+.cascader-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.cascader-checkbox
+.cascader-checkbox__inner {
+  display: inline-block;
+  position: relative;
+  width: 24rpx;
+  height: 24rpx;
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+  border: 2rpx solid #999;
+  box-sizing: border-box;
+  margin-right: 10rpx;
+
+}
+
+.cascader-checkbox
+.cascader-checkbox-icon {
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}

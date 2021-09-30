@@ -1,0 +1,148 @@
+<template name="activity">
+<view>
+  <view class="activety-tittle">活动信息</view>
+  
+  <view class="{{ shrink.type === true ? '' : 'isHide' }}" >
+      <view class="sign-list">
+        <view class="sign-title">活动人数<text class="required">*</text></view>
+        <input placeholder="请输入活动人数" 
+          name="peopleNumber" value="{{signInfo.checkinSaleDetailData.peopleNumber}}" 
+          data-label="peopleNumber" onBlur="veryIntegerNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">同行人员</view>
+        <view data-type="活动" data-peopleNumber="{{ signInfo.checkinSaleDetailData.colleagues }}" onTap="jumpToColleague">
+          <input class="input colleagues" placeholder="请填写同行人员" disabled
+            name="colleagues" value="{{signInfo.checkinSaleDetailData.colleagues}}" />
+        </view>
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">品牌 <text class="required">*</text></view>
+        <view class="picker">
+          <picker onChange="clientBrandChoose" value="{{brandIndex}}" range="{{brandType}}" range-key="label" >
+            <view class="picker-item">
+              <label a:if="{{!signInfo.checkinSaleDetailData.brand}}" class="label-null">请输入客户名称获取数据</label>
+              <label a:else>{{signInfo.checkinSaleDetailData.brand}}</label>
+              <input class="picker-input" placeholder="请选择品牌" name="brand" value="{{brandType[brandIndex].label}}" disabled />
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-tittle">
+          活动类型<text class="required">*</text><image class="tip-icon" mode="scaleToFill" src="/static/image/tip.svg" onTap="closeActivityToast" />
+        </view>
+        <view class="picker">
+          <picker onChange="activityTypeChoose" value="{{activityIndex}}" range="{{activityType}}" range-key="label" >
+            <view class="picker-item">
+              <label a:if="{{!signInfo.checkinSaleDetailData.activityType}}" class="label-null">请输入客户名称获取数据</label>
+              <label a:else>{{signInfo.checkinSaleDetailData.activityType}}</label>
+              <input class="picker-input" placeholder="请选择活动类型" name="activityType" value="{{activityType[activityIndex].label}}" disabled />
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">活动进行第<text class="required">*</text></view>
+        <input class="input" placeholder="请输入天数" name="days" value="{{signInfo.checkinSaleDetailData.days}}" 
+        data-label="days" onBlur="veryIntegerNum"/>
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">活动当天销售达成（总业绩）<text class="required">*</text></view>
+        <input class="input" placeholder="请输入当天销售达成" 
+          data-label="totalPerformanceDecimal" onBlur="veryFloatNum"
+          name="totalPerformanceDecimal" value="{{signInfo.checkinSaleDetailData.totalPerformanceDecimal}}"/>
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">
+          活动累计销售达成<text class="required">*</text>
+          <image class="tip-icon" mode="scaleToFill" src="/static/image/tip.svg" 
+            data-label="activitTotalSale" onTap="closeActivityToast" />
+        </view>
+        <input class="input" placeholder="请输入当天销售达成" 
+          name="activitySalesAchieved" value="{{ signInfo.checkinSaleDetailData.activitySalesAchieved }}" 
+          data-label="activitySalesAchieved" onBlur="veryFloatNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">个人当天销售达成（业绩）<text class="required">*</text></view>
+        <input class="input" placeholder="请输入个人销售达成" 
+          name="selfPerformance" value="{{signInfo.checkinSaleDetailData.selfPerformance}}" 
+          data-label="selfPerformance" onBlur="veryFloatNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">成交总单数<text class="required">*</text></view>
+        <input class="input" placeholder="请输入成交总单数" 
+          name="totalOrders" value="{{signInfo.checkinSaleDetailData.totalOrders}}"
+          data-label="totalOrders" onBlur="veryIntegerNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">平均客单价<text class="required">*</text></view>
+        <input class="input" placeholder="请输入平均客单价" 
+          name="averagePrice" value="{{signInfo.checkinSaleDetailData.averagePrice}}" 
+          data-label="averagePrice" onBlur="veryFloatNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">个人最高客单价<text class="required">*</text></view>
+        <input class="input" placeholder="请输入个人最高客单价"
+          name="personalMaxPrice" value="{{signInfo.checkinSaleDetailData.personalMaxPrice}}"
+          data-label="personalMaxPrice" onBlur="veryFloatNum" />
+      </view>
+
+      <view class="sign-list">
+        <view class="sign-title">团队最高客单价<text class="required">*</text></view>
+        <input class="input" placeholder="请输入团队最高客单价" 
+          name="teamMaxPrice" value="{{ signInfo.checkinSaleDetailData.teamMaxPrice }}" 
+          data-label="teamMaxPrice" onBlur="veryFloatNum" />
+      </view>
+
+      <view class="sign-list-img">
+        <view class="sign-title">活动现场陈列图片<text class="required">*</text></view>
+        <view class="sign-img">
+          <image mode="scaleToFill" src="/static/image/upload_img.svg" class="sign-default" data-type="activity" onTap="importImg" />
+          <view a:for="{{ signInfo.checkinSaleDetailData.activityFileItems }}" >
+            <text data-type="activity" data-index='{{index}}' onTap="delImg"></text>
+            <image data-type="activity" data-index='{{index}}' mode="scaleToFill" class="sign-img-content" src="{{ item.url }}" onTap="previewImg"/>
+          </view>
+        </view>
+      </view>
+
+        <view class="sign-list-img">
+        <view class="sign-title">当天销售达成（总业绩）图片<text class="required">*</text></view>
+        <view class="sign-img">
+          <image mode="scaleToFill" src="/static/image/upload_img.svg" class="sign-default" data-type="sale" onTap="importImg" />
+          <view a:for="{{ signInfo.checkinSaleDetailData.salesAchievedFileItems }}">
+            <text data-type="sale" data-index='{{index}}' onTap="delImg"></text>
+            <image data-type="sale" data-index='{{index}}' mode="scaleToFill" class="sign-img-content" src="{{ item.url }}" onTap="previewImg"/>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  <view class="sign-list">
+    <view class="sign-title">备注</view>
+    <textarea class="textarea" placeholder="请输入备注" name="outRemark" value="{{signInfo.outRemark}}" />
+  </view>
+
+  <view class="sign-list-img">
+      <view class="sign-title">签退拍照<text class="required">*</text></view>
+      <view class="sign-img">
+        <image mode="scaleToFill" src="/static/image/upload_img.svg" class="sign-default" data-type="out" onTap="importImg" />
+        <view a:for="{{ signInfo.fileItems }}"  >
+          <text data-type="out" data-index='{{index}}' onTap="delImg"></text>
+          <image data-type="out" data-index='{{index}}' mode="scaleToFill" class="sign-img-content" src="{{ item.url }}" onTap="previewImg"/>
+        </view>
+      </view>
+    </view>
+
+</view>
+</template>

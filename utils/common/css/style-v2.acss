@@ -1,0 +1,238 @@
+.page {
+  height: 100vh;
+  position: relative;
+  font-size: 28rpx;
+}
+
+.page .page-content {
+  height: 90vh;
+}
+
+.page .page-footer {
+  height: 10vh;
+}
+
+.page .page-footer.page-footer-tabs {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.page .page-footer.page-footer-tabs .tabs-item {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.page .page-footer.page-footer-tabs .tabs-item image {
+  width: 45%;
+  height: 45%;
+}
+
+/* 卡片平铺样式 */
+.card {
+  display: block;
+  padding: 10px;
+  font-size: 24rpx;
+}
+
+.card.card-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.card.card-flex.card-flex-column {
+  flex-direction: column;
+}
+
+.card.card-flex .card-left {
+  flex: 1;
+  user-select: text;
+}
+
+.card.card-flex .card-right {
+  flex: 0 0 140rpx;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.card.card-round {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.card.card-round:last-of-type {
+  margin-bottom: 0;
+}
+
+.card.card-round .title {
+  font-size: 26rpx;
+  border-bottom: 1px solid #ddd;
+  padding: 10rpx;
+}
+
+.card.card-round .content {
+  padding: 10rpx;
+}
+
+.card.card-round .content .row.justify-space {
+  justify-content: space-between;
+}
+
+.card.card-round .content .row.justify-space .item {
+  display: flex;
+}
+
+.card .title {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.5;
+  font-size: 26rpx;
+}
+
+.card .title.big-title {
+  font-size: 28rpx !important;
+  padding-bottom: 0; 
+}
+
+.card .title.bolder {
+  font-weight: 700;
+}
+
+.card .row {
+  display: flex;
+  line-height: 1.5;
+}
+
+.card .row .row-label {
+  align-items: flex-start;
+  color: #777;
+}
+
+.card .small-btn {
+  width: 100rpx;
+  border: 1px solid #099;
+  border-radius: 4px;
+  text-align: center;
+  padding: 6rpx;
+  color: #099;
+}
+
+.card .small-btn.disabled {
+  border-color: #ddd;
+  color: #a5a8ae;
+}
+
+.card .tips {
+  color: #555;
+  margin-top: 10rpx;
+}
+
+/* 卡片平铺样式 */
+
+/* 颜色专区 */
+.bg-white {
+  background-color: #fff;
+}
+.red {
+  color: red !important;
+}
+.blue {
+  color: blue !important;
+}
+/* 颜色专区 */
+
+/* 边框专区 */
+.border {
+  border: 1px solid #000;
+}
+.border-bottom {
+  border-bottom: 1px solid #000;
+}
+.border-top {
+  border-top: 1px solid #000; 
+}
+.border-left {
+  border-left: 1px solid #000;
+}
+.border-right {
+  border-right: 1px solid #000;
+}
+.border-light-gray {
+  border-color: #ddd !important;
+}
+.border-none {
+  border: 0 !important;
+}
+/* 边框专区 */
+
+/* 间距 */
+.p-10 {
+  padding: 10px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.pr-10 {
+  padding-right: 10px;
+}
+.m-10 {
+  margin: 10px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.m-none {
+  margin: 0 !important;
+}
+.p-none {
+  padding: 0 !important;
+}
+/* 间距 */
+
+/* 加载文案样式 */
+.load-tips {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  margin: 20rpx;
+}
+/* 加载文案样式 */
+
+/* 字体大小 */
+.f-32 {
+  font-size: 32rpx !important;
+}
+
+.f-28 {
+  font-size: 28rpx !important;
+}
+/* 字体大小 */
+

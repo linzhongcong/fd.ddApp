@@ -1,0 +1,24 @@
+<import src="./merchant-myVisit.axml" />
+<import src="./merchant-isProfile.axml" />
+<import src="./merchant-maintain.axml" />
+
+<view class="merchant-detail">
+  <block a:if="{{source === 'myVisit'}}">
+    <template is="myVisit" data="{{visitInfo, shopInfo, shopInfoArray, merchantTypes, count}}"></template>
+  </block>
+
+  <block a:elif="{{source === 'maintain'}}">
+    <template is="maintain" data="{{visitInfo, shopInfo, shopInfoArray ,merchantTypes, count}}"></template>
+  </block>
+
+  <block a:elif="{{source === 'isProfile'}}">
+    <template is="isProfile" data="{{visitInfo, shopInfo, shopInfoArray, merchantTypes, count}}"></template>
+  </block>
+
+  <block a:else>
+    <image mode="scaleToFill" src="/static/404.gif"/>
+  </block>
+</view>
+
+
+

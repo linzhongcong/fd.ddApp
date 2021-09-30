@@ -1,0 +1,95 @@
+<view class="page">
+  <scroll-view style="height: {{scrollViewHeight}};" class="page-content" scroll-y lower-threshold="{{100}}" scroll-top="{{backTop}}" onScrollToLower="onScrollToLower">
+    <!-- 卡片 -->
+    <view class="card crad-block border-none bg-white mb-10 f-28">
+      <view class="title f-32">
+        <view style="padding-right: 10rpx;">{{detailData.merchant_name}}</view>
+        <view>{{detailData.merchant_type}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label" style="min-width: 200rpx;">系统/门店名称</view>
+        <view class="row-text">{{detailData.name}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label" style="min-width: 200rpx;">门店地址</view>
+        <view class="row-text">{{detailData.address}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label" style="min-width: 200rpx;">门店数量</view>
+        <view class="row-text">{{detailData.facade_number}}</view>
+      </view>
+      <view class="row">
+        <view class="row-label" style="min-width: 200rpx;">负责人</view>
+        <view class="row-text">{{detailData.followBy}}</view>
+      </view>
+    </view>
+    <!-- 选项卡 -->
+    <view>
+      <tabs 
+        tabs="{{tabList}}"
+        tabsName="currentTabIndex"
+        activeTab="{{currentTabIndex}}"
+        tabContentHeight="{{tabContentHeight}}"
+        stickyBar="{{true}}"
+        tabBarUnderlineColor="#00A1E9"
+        tabBarActiveTextColor="#00A1E9"
+        onTabClick="handleTabChange"
+        onChange="handleTabChange"
+        onTabFirstShow="handleTabFirstShow">
+        <tab-content key="0">
+          <view id="tab-content-0" style="padding: 10px;">
+            <view class="card card-round" a:for="{{visitRecordList}}" data-type="detail" data-id="{{item.checkinId}}" data-checkin-way="{{item.checkinWay}}" onTap="goToPage" key="visit{{index}}">
+              <view class="title">2020年4月11日 8:45:30</view>
+              <view class="content">
+                <view class="row justify-space">
+                  <view class="item">
+                    <view class="label">签到人：</view>
+                    <view class="text">{{item.created_by}}</view>
+                  </view>
+                  <view class="item">
+                    <view class="label" style="min-width: 122rpx;">签到类型：</view>
+                    <view class="text">{{item.checkinWayText}}</view>
+                  </view>
+                </view>
+                <view class="row">
+                  <view class="label" style="min-width: 122rpx;">签到地点：</view>
+                  <view class="text">{{item.address}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </tab-content>
+        <tab-content key="1">
+          <view id="tab-content-1" style="padding: 10px;">
+            <view class="card card-round" a:for="{{contactList}}" key="contact{{index}}">
+              <view class="title big-title border-none">{{item.contactName}}</view>
+              <view class="content">
+                <view class="row" style="margin-top: 0;">
+                  <view class="label">联系人电话：</view>
+                  <view class="text">{{item.contactPhone}}</view>
+                </view>
+                <view class="row">
+                  <view class="label">联系人职务：</view>
+                  <view class="text">{{item.contactJob}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </tab-content>
+      </tabs>
+    </view>
+    <!-- 提示 -->
+    <view class="load-tips">{{loadTipsText}}</view>
+  </scroll-view>
+  <view id="footer" a:if="{{detailData.isCollect}}" class="page-footer page-footer-tabs">
+    <view class="tabs-item" onTap="handleOnTabBarClick" data-type="cancel">
+      <image mode="scaleToFill" src="/static/icon/receive.svg" style="width: 30%; height:30%; margin-bottom: 7%; margin-top: 7%;"/>
+      <view>退回</view>
+    </view>
+    <view class="tabs-item" onTap="handleOnTabBarClick" data-type="visit">
+      <image mode="scaleToFill" src="/static/icon/visit.svg"/>
+      <view>拜访</view>
+    </view>
+  </view>
+  <view a:else id="footer"></view>
+</view>

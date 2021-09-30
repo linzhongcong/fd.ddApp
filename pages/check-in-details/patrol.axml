@@ -1,0 +1,196 @@
+<template name="patrol">
+<view class="page">
+  <view class="page-section">
+  
+    <view class="form-row">
+      <view class="form-row-label">被访客户：</view>
+      <view class="form-row-content">{{signInfo.merchantName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">客户类型：</view>
+      <view class="form-row-content">{{signInfo.merchantTypeName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">客户门店：</view>
+      <view class="form-row-content">{{signInfo.facadeName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="page-section-title">拍门店/公司大门：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.checkoutFileItems}}">
+        <image class="page-section-demo-img" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+  </view>
+
+  <view class="page-section">
+    <view class="form-row">
+      <view class="form-row-label">签到时间：</view>
+      <view class="form-row-content">{{signInfo.signinAt}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签退时间：</view>
+      <view class="form-row-content">{{signInfo.signoutAt}}</view>
+    </view>
+    <view class="form-line"></view>
+    
+    <view class="form-row">
+      <view class="form-row-label">签退地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到类型：</view>
+      <view class="form-row-content">{{signInfo.checkinWay}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">访问时长：</view>
+      <view class="form-row-content">{{signInfo.checkinLength}}</view>
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="page-section-title">门店陈列</view>
+    <block a:for="{{signInfo.facadeDisplay}}" a:for-item="fd_item">
+      <view class="form-row">
+        <view class="form-row-label" >陈列等级：</view>
+        <view class="form-row-content">{{fd_item.facadeLevel}}</view>
+      </view>
+      <view class="page-section-demo">
+        <view class="form-row-content">
+          <block a:for="{{fd_item.ourGoodsDisplay}}">
+            <image class="page-section-demo-img" mode="scaleToFill" src="{{item.objectUrl}}"/>
+          </block>
+        </view>  
+      </view>
+      <view class="form-line"></view>
+    </block>
+    
+    <view class="page-section-title">优秀陈列：</view>
+    <view class="page-section-demo">
+      <view class="form-row-content">
+        <block a:for="{{signInfo.excellentFacadeDisplay}}">
+          <image class="page-section-demo-img" mode="scaleToFill" src="{{item.objectUrl}}"/>
+        </block>
+      </view>  
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="page-section-title">产品明细</view>
+    <view class="form-row">
+      <view class="form-row-label">门店SKU数：</view>
+      <view class="form-row-content">{{signInfo.sku_count}}</view>
+    </view>
+
+    <block a:for="{{signInfo.facadeSaleDetail}}">
+    <view class="form-line"></view>
+    <view class="page-section-demo">
+      <view class="product">
+        <view class="product-row">
+          <text class="product-name">产品名称：{{item.name}}</text>
+        </view>
+        
+        <view class="product-row">
+          <view class="product-col">
+            <text class="">零售价：{{item.price}}</text>
+          </view>
+          <view class="product-col">
+            <text class="">门店销售价：{{item.sale_price}}</text>
+          </view>
+        </view>
+
+        <view class="product-row">
+          <view class="product-col">
+            <text class="">门店库存：{{item.inventory}}</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    </block>
+  </view>
+
+  <view class="page-section">
+    <view class="page-section-title">POS记录</view>
+    <block a:for="{{signInfo.facadePosRecord}}" a:for-item="fr_item">
+    <view class="page-section-title">POS品牌：{{fr_item.brands}}</view>
+    <view class="page-section-title">POS图片</view>
+    <view class="page-section-demo">
+      <view class="form-row-content">
+        <block a:for="{{fr_item.posRecordImg}}">
+          <image class="page-section-demo-img" mode="scaleToFill" src="{{item.objectUrl}}"/>
+        </block>
+      </view>
+    </view>
+    <view class="form-line"></view>
+    </block>
+  </view>
+
+  <view class="page-section">
+    <view class="page-section-title">竞对记录</view>
+    <block a:for="{{signInfo.competitorRecord}}" a:for-item="cr_item">
+      <view class="form-row">
+        <view class="form-row-label">竞对品牌：{{cr_item[1].value}}</view>
+      </view>
+
+      <view class="page-section-title">竞对陈列</view>
+      <view class="page-section-demo">
+        <block a:for="{{cr_item[0].competitorDisplay}}">
+          <image class="page-section-demo-img" mode="scaleToFill" src="{{item.objectUrl}}"/>
+        </block>
+      </view>
+
+      <view class="page-section-title">竞对活动方案</view>
+      <view class="page-section-demo" style="padding-bottom: 0;">
+        <view class="form-row-content">
+          {{cr_item[2].value}}
+        </view>
+      </view>
+      <view class="form-line"></view>
+      
+      <view class="page-section-title">竞对人员配备</view>
+      <view class="page-section-demo" style="padding-bottom: 0;">
+        <view class="form-row-content">
+          {{cr_item[3].value}}
+        </view>
+      </view>
+
+    </block>
+  </view>
+
+  <view class="page-section">
+    <view class="form-row">
+      <view class="form-row-label">站于货架边视野内人数：</view>
+      <view class="form-row-content">{{signInfo.shelfPeople}}</view>
+    </view>
+    <view class="form-line"></view>
+    <view class="page-section-title">对销售增长的建议</view>
+    <view class="page-section-demo" style="padding-bottom: 0;">
+      <view class="form-row-content">
+        {{signInfo.salesGrowthSuggestion}}
+      </view>
+    </view>
+
+  </view>
+
+
+</view>
+</template>

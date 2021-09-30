@@ -1,0 +1,19 @@
+<template name="no_shop">
+<view>
+  <view class="sign-list">
+    <view class="sign-title">备注</view>
+    <textarea class="textarea" placeholder="请输入备注" name="inRemark" />
+  </view>
+
+  <view class="sign-list-img">
+    <view class="sign-title" style="margin-left: 20rpx;">签到拍照 <text class="required">*</text></view>
+    <view class="sign-img">
+      <image onTap="onSelfieFileItems" mode="scaleToFill" class="sign-default" src="/static/image/upload_img.svg"/>
+      <view a:for="{{signInfo.selfieFileItemsCache}}">
+        <text onTap="delImg" data-index='{{index}}' data-name="self"></text>
+        <image onTap="previewImg" onLoad="onLoadImg" data-index='{{index}}' data-name="self"  mode="scaleToFill" class="sign-img-content" src="{{ item }}"/>
+      </view>
+    </view>
+  </view>
+</view>
+</template>

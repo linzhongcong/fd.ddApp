@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #999;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="search" transform="translate(2 2)">
+    <path id="Shape" class="cls-1" d="M35.578,33.529l-8.265-8.261a15.426,15.426,0,1,0-2.045,2.045l8.265,8.265a1.455,1.455,0,0,0,2.049,0A1.459,1.459,0,0,0,35.578,33.529ZM20.306,26.98A12.553,12.553,0,0,1,3.877,20.306,12.553,12.553,0,0,1,10.551,3.877,12.553,12.553,0,0,1,26.98,10.551,12.553,12.553,0,0,1,20.306,26.98Z"/>
+    <rect id="Rectangle-45-Copy-25" class="cls-2" width="40" height="40" transform="translate(-2 -2)"/>
+  </g>
+</svg>

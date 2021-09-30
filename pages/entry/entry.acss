@@ -1,0 +1,53 @@
+/* required by usingComponents */
+.entry {
+  background-color: #fff;
+  padding: 20rpx 40rpx;
+}
+
+.entry .entry-area {
+  margin-bottom: 40rpx;
+}
+
+.entry .entry-area:last-child {
+  margin: 0
+}
+
+.entry .entry-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 24rpx;
+}
+
+.entry .entry-content .entry-content-box {
+  font-size: 28rpx;
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #ececec;
+}
+
+.entry .entry-content .entry-content-box .icon {
+  width: 60rpx;
+  height: 60rpx;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  margin-bottom: 20rpx;
+}
+
+.checkout {
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 10%;
+  right: 20rpx;
+  background-color: #FA8C16;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 100rpx;
+  text-align: center;
+  box-shadow: 0rpx 4rpx 20rpx #FA8C16;
+}

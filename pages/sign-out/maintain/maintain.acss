@@ -1,0 +1,144 @@
+.required {
+  margin-left: 3rpx;
+  color: red;
+}
+
+.page {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.form-row {
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #000;
+  line-height: 40rpx;
+}
+
+.form-row-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  line-height: 28rpx;
+}
+
+.form-row-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 24rpx;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.form-row-content-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.form-label__img {
+  width: 72rpx;
+  height: 50%;
+  vertical-align: middle;
+}
+
+.signout-img {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.signout-img-default {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 16rpx 20rpx 0 0;
+}
+
+.signout-img-box {
+  border: 1px solid rgb(236, 234, 234);
+  border-radius: 5rpx;
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 30rpx;
+  margin-top: 16rpx;
+  position: relative;
+}
+
+.signout-img-text {
+  position: absolute;
+  top: -16rpx;
+  left: -16rpx;
+  background: url('/static/image/del_img.svg') no-repeat;
+  background-size: 32rpx 32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.signout-img-content {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.page-section-title {
+  font-size: 26rpx;
+  padding: 24rpx 0 0 24rpx;
+}
+
+.page-section-btns {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-btn-submit {
+  width: 100%;
+  margin-bottom: 0rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.merchantType {
+  display: none;
+}
+
+
+.radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5rpx; 
+  margin-bottom: 20rpx;
+}
+
+
+.radio-text {
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5rpx; 
+  margin-bottom: 20rpx;
+}
+
+.checkbox-text {
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.form-title {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.form-content {
+  font-size: 26rpx;
+  font-weight: 400;
+}
+

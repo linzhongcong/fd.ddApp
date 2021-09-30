@@ -1,0 +1,187 @@
+<template name="other">
+<view class="page">
+  <view class="page-section" style="padding: 0rpx 24rpx;">
+    <view class="form-row">
+      <view class="form-row-label">拜访类型：</view>
+      <view class="form-row-content">{{signInfo.checkinWay}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到地址：</view>
+      <view class="form-row-content">{{signInfo.address}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签到时间：</view>
+      <view class="form-row-content">{{signInfo.signinAt}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">签退时间：</view>
+      <view class="form-row-content">{{signInfo.signoutAt}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">访问时长：</view>
+      <view class="form-row-content">{{signInfo.checkinLength}}</view>
+    </view>
+    <view class="form-line"></view>
+    
+    <view class="form-row">
+      <view class="form-row-label">客户名称：</view>
+      <view class="form-row-content">{{signInfo.merchantName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">客户类型：</view>
+      <view class="form-row-content">{{signInfo.merchantTypeName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">客户等级：</view>
+      <view class="form-row-content">{{signInfo.level}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">系统/门店：</view>
+      <view class="form-row-content">{{signInfo.facadeName}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">门店地址：</view>
+      <view class="form-row-content">{{signInfo.facadeAddress}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">销售目标：</view>
+      <view class="form-row-content">{{signInfo.salesTarget}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">同行人员：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.colleagues}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">品牌：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.brand}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">{{detailList.checkinWay === '活动' ? '活动' : '贴柜'}}当天销售达成（总业绩）：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.totalPerformanceDecimal}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">{{detailList.checkinWay === '活动' ? '活动' : '贴柜'}}个人当天销售达成（业绩）：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.selfPerformance}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">平均客单价：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.totalOrders}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">个人最高客单价：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.personalMaxPrice}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">团队最高客单价：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.teamMaxPrice}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <block a:if="{{signInfo.checkinWay === '活动' || signInfo.checkinWay == '贴柜' }}">
+
+    <view class="form-row">
+      <view class="form-row-label">{{signInfo.checkinWay === '活动' ? '活动' : '贴柜'}}人数：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.peopleNumber}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">活动类型：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.activityType}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">天数：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.days}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <view class="form-row">
+      <view class="form-row-label">活动累计销售达成：</view>
+      <view class="form-row-content">{{signInfo.saleDetail.activitySalesAchieved}}</view>
+    </view>
+    <view class="form-line"></view>
+
+    <block a:if="{{signInfo.checkinWay === '活动'}}">
+      <view class="page-section-title" style="padding-left: 0rpx;">活动现场陈列图片：</view>
+      <view class="page-section-demo">
+        <block a:for="{{signInfo.activityFileItems}}">
+          <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+        </block>
+      </view>
+    </block>
+
+    <block a:if="{{signInfo.checkinWay === '贴柜'}}">
+    <view class="page-section-title" style="padding-left: 0rpx;">贴柜现场陈列图片：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.stickCabinetFileItems}}">
+        <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+    </block>
+
+    <view class="page-section-title" style="padding-left: 0rpx;">当天销售达成（总业绩）照片：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.salesAchievedFileItems}}">
+        <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+    </block>  
+
+    <view class="page-section-title" style="padding-left: 0rpx;">签到图片：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.selfieFileItems}}">
+        <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+    <view class="page-section-title" style="padding-left: 0rpx;">签退图片：</view>
+    <view class="page-section-demo">
+      <block a:for="{{signInfo.checkoutFileItems}}">
+        <image style="width: 116rpx;height: 116rpx;" mode="scaleToFill" src="{{item.url}}"/>
+      </block>
+    </view>
+
+    <view class="page-section-title" style="padding-left: 0rpx;">备注：</view>
+    <view class="page-section-demo">
+      <view class="form-row-content">{{signInfo.outRemark}}</view>
+    </view>
+
+  </view>
+
+</view>
+</template>
